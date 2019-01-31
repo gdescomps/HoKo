@@ -1,0 +1,6 @@
+Installer Qt
+http://guillaumebelz.github.io/qtinstall/
+
+Installer OpenCV
+https://docs.opencv.org/4.0.1/d7/d9f/tutorial_linux_install.html
+(compiler dans un nouveau dossier /opt/opencv/release)
