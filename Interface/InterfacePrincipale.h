@@ -15,8 +15,10 @@ class InterfacePrincipale : public QMainWindow
 public:
     explicit InterfacePrincipale(QWidget *parent = 0);
     ~InterfacePrincipale();
- /*   
+   
 private slots:
+	void importerUneImage();
+/*
     void on_btnOpen_clicked();
     void on_btnReset_clicked();
     void on_btnToGray_clicked();

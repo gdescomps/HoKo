@@ -18,6 +18,20 @@ InterfacePrincipale::~InterfacePrincipale()
 {
     delete ui;
 }
+
+void InterfacePrincipale::importerUneImage()
+{
+	QString nomImage = QFileDialog::getOpenFileName(this,tr("Open Image"),QDir::currentPath(),tr("Image Files [ *.jpg , *.jpeg , *.bmp , *.png , *.gif]"));
+	char* cheminImage = nomImage.toLocal8Bit().data();
+
+	cv::Mat imageMat = cv::imread(cheminImage);
+	
+	QImage imageQ = QImage((const unsigned char*)imageMat.data,imageMat.cols,imageMat.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->label->setPixmap(QPixmap::fromImage(imageQ));
+	ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
+	ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
+	ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
+}
 /*
 void InterfacePrincipale::on_btnOpen_clicked()
 {
