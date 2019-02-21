@@ -15,7 +15,7 @@ class InterfacePrincipale : public QMainWindow
 public:
     explicit InterfacePrincipale(QWidget *parent = 0);
     ~InterfacePrincipale();
-    
+    void resizeEvent(QResizeEvent*);
    
 private slots:
 	void importerUneImage();

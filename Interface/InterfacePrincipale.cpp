@@ -58,3 +58,24 @@ void InterfacePrincipale::importerUneImage()
 	ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
 	imageImportee=true;
 }
+
+void InterfacePrincipale::resizeEvent(QResizeEvent* event)
+{
+	//printf("Resize \n");
+	if(imageImportee){
+		cv::Mat imageMat=imageOriginale;
+		double largeurFinale = ui->label->width();
+		double largeurInitiale = imageMat.cols;
+
+		double echelle = largeurFinale/largeurInitiale;
+		echelle = echelle-fmod(echelle,0.05);
+
+		cv::resize(imageMat, imageMat, cv::Size(), echelle, echelle);
+
+		QImage imageQ = QImage((const unsigned char*)imageMat.data,imageMat.cols,imageMat.rows,QImage::Format_RGB888).rgbSwapped();
+		ui->label->setPixmap(QPixmap::fromImage(imageQ));
+		ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
+		ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
+		ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
+	}
+}
