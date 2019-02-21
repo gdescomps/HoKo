@@ -68,8 +68,8 @@ public:
     {
         if (InterfacePrincipale->objectName().isEmpty())
             InterfacePrincipale->setObjectName(QString::fromUtf8("InterfacePrincipale"));
-        InterfacePrincipale->resize(900, 500);
-        InterfacePrincipale->setMinimumSize(QSize(900, 500));
+        InterfacePrincipale->resize(965, 500);
+        InterfacePrincipale->setMinimumSize(QSize(964, 500));
         QIcon icon;
         icon.addFile(QString::fromUtf8("logo/hoko-logo-500.png"), QSize(), QIcon::Normal, QIcon::Off);
         InterfacePrincipale->setWindowIcon(icon);
