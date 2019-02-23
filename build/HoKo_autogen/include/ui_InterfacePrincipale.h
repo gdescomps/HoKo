@@ -57,7 +57,7 @@ public:
     QPushButton *pushButton;
     QHBoxLayout *horizontalLayout_3;
     QComboBox *comboBox;
-    QPushButton *pushButton_5;
+    QPushButton *ajouterBouton;
     QMenuBar *menuBar;
     QMenu *menuHoKo;
     QMenu *menuCOnfiguration;
@@ -209,10 +209,10 @@ public:
 
         horizontalLayout_3->addWidget(comboBox);
 
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        ajouterBouton = new QPushButton(centralWidget);
+        ajouterBouton->setObjectName(QString::fromUtf8("ajouterBouton"));
 
-        horizontalLayout_3->addWidget(pushButton_5);
+        horizontalLayout_3->addWidget(ajouterBouton);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -293,7 +293,7 @@ public:
         comboBox->setItemText(3, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         comboBox->setItemText(4, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
 
-        pushButton_5->setText(QApplication::translate("InterfacePrincipale", "Ajouter", nullptr));
+        ajouterBouton->setText(QApplication::translate("InterfacePrincipale", "Ajouter", nullptr));
         menuHoKo->setTitle(QApplication::translate("InterfacePrincipale", "Image", nullptr));
         menuCOnfiguration->setTitle(QApplication::translate("InterfacePrincipale", "Configuration", nullptr));
         menuAide->setTitle(QApplication::translate("InterfacePrincipale", "Aide", nullptr));

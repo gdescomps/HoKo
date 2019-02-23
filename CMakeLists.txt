@@ -19,6 +19,9 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # Populate a CMake variable with the sources
 set(HoKo_SRCS
+	Interface/Fenetres/FenetreModifier.cpp
+	Interface/Fenetres/FenetreModifier.h
+	Interface/Fenetres/FenetreModifier.ui
 	Interface/InterfacePrincipale.cpp
     Interface/InterfacePrincipale.h
     Interface/InterfacePrincipale.ui

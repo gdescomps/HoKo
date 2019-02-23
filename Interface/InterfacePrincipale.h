@@ -16,9 +16,11 @@ public:
     explicit InterfacePrincipale(QWidget *parent = 0);
     ~InterfacePrincipale();
     void resizeEvent(QResizeEvent*);
+
    
 private slots:
 	void importerUneImage();
+	void on_ajouterBouton_clicked();
 
 private:
     Ui::InterfacePrincipale *ui;

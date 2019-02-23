@@ -1,5 +1,7 @@
 #include "Interface/InterfacePrincipale.h"
 #include "ui_InterfacePrincipale.h"
+#include "Fenetres/FenetreModifier.h"
+
 #include <opencv2/opencv.hpp>
 #include <QFileDialog>
 #include <opencv2/imgproc.hpp>
@@ -78,4 +80,10 @@ void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 		ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
 		ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
 	}
+}
+
+void InterfacePrincipale::on_ajouterBouton_clicked()
+{
+    FenetreModifier *fenMod = new FenetreModifier();
+    fenMod->show();
 }
