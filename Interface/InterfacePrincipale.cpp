@@ -84,6 +84,19 @@ void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 
 void InterfacePrincipale::on_ajouterBouton_clicked()
 {
-    FenetreModifier *fenMod = new FenetreModifier();
-    fenMod->show();
+    /*FenetreModifier *fenMod = new FenetreModifier();
+    fenMod->show();*/
+    cv::Mat imageFloue;
+    cv::GaussianBlur(imageOriginale, imageFloue, cv::Size(101,101), -1);
+
+    double largeurFinale = ui->label->width();
+	double largeurInitiale = imageFloue.cols;
+
+	double echelle = largeurFinale/largeurInitiale;
+	echelle = echelle-fmod(echelle,0.05);
+
+	cv::resize(imageFloue, imageFloue, cv::Size(), echelle, echelle);
+    QImage imageQ = QImage((const unsigned char*)imageFloue.data,imageFloue.cols,imageFloue.rows,QImage::Format_RGB888).rgbSwapped();
+    ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
+
 }
