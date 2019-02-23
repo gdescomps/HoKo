@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     InterfacePrincipale interfacePrincipale;
-    interfacePrincipale.show();
+    interfacePrincipale.showMaximized();
     
     return a.exec();
 }
