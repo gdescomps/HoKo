@@ -247,12 +247,21 @@ public:
 
         retranslateUi(InterfacePrincipale);
         QObject::connect(actionImporter_une_image, SIGNAL(triggered()), InterfacePrincipale, SLOT(importerUneImage()));
-        QObject::connect(actionSauvegarder_l_image_finale, SIGNAL(triggered()), InterfacePrincipale, SLOT(importerUneImage()));
+        QObject::connect(actionSauvegarder_l_image_finale, SIGNAL(triggered()), InterfacePrincipale, SLOT(sauvegarderImageFinale()));
+		QObject::connect(actionAide , SIGNAL(triggered()), InterfacePrincipale, SLOT(afficherGuide()));
+		QObject::connect(actionVersion, SIGNAL(triggered()), InterfacePrincipale, SLOT(afficherApropos()));
 
         QMetaObject::connectSlotsByName(InterfacePrincipale);
     } // setupUi
 
     void retranslateUi(QMainWindow *InterfacePrincipale)
+
+
+
+
+
+
+
     {
         InterfacePrincipale->setWindowTitle(QApplication::translate("InterfacePrincipale", "HoKo", nullptr));
         actionCharger_une_configuration->setText(QApplication::translate("InterfacePrincipale", "Charger une configuration", nullptr));
@@ -307,4 +316,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_INTERFACEPRINCIPALE_H
+#endif // 
