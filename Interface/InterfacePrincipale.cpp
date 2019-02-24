@@ -1,6 +1,7 @@
 #include "Interface/InterfacePrincipale.h"
 #include "ui_InterfacePrincipale.h"
 #include "Fenetres/FenetreModifier.h"
+#include "Image/GestionImage.h"
 
 #include <opencv2/opencv.hpp>
 #include <QFileDialog>
@@ -12,12 +13,12 @@
 
 using namespace cv;
 
-InterfacePrincipale::InterfacePrincipale(QWidget *parent) :
+InterfacePrincipale::InterfacePrincipale(GestionImage gestionImage, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::InterfacePrincipale)
 {
-	imageImportee=false;
     ui->setupUi(this);
+    gestionImage = gestionImage;
 }
 
 InterfacePrincipale::~InterfacePrincipale()
@@ -30,8 +31,9 @@ void InterfacePrincipale::importerUneImage()
 	QString nomImage = QFileDialog::getOpenFileName(this,tr("Open Image"),QDir::currentPath(),tr("Image Files [ *.jpg , *.jpeg , *.bmp , *.png , *.gif]"));
 	char* cheminImage = nomImage.toLocal8Bit().data();
 
-	imageOriginale = cv::imread(cheminImage);
-	cv::Mat imageMat=imageOriginale;
+	gestionImage.setImageOriginale(cv::imread(cheminImage));
+	cv::Mat imageMat = gestionImage.getImageOriginale(); 
+	
 
 	double largeurFinale = ui->label->width();
 	double largeurInitiale = imageMat.cols;
@@ -58,14 +60,14 @@ void InterfacePrincipale::importerUneImage()
 	ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
 	ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
 	ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
-	imageImportee=true;
 }
 
 void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 {
 	//printf("Resize \n");
-	if(imageImportee){
-		cv::Mat imageMat=imageOriginale;
+	if(gestionImage.isImportee()){
+		cv::Mat imageMat=gestionImage.getImageOriginale();
+		
 		double largeurFinale = ui->label->width();
 		double largeurInitiale = imageMat.cols;
 
@@ -85,7 +87,7 @@ void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 
 void InterfacePrincipale::on_ajouterBouton_clicked()
 {
-    if(imageImportee){
+    if(gestionImage.isImportee()){
 	    FenetreModifier *fenMod = new FenetreModifier(this);
 	    fenMod->show();
 	}
