@@ -4,6 +4,12 @@
 #include <QMainWindow>
 #include "Image/GestionImage.h"
 
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
+#include <stdio.h>
+#include <cmath>
+
 namespace Ui {
 class InterfacePrincipale;
 }
@@ -17,7 +23,11 @@ public:
     
     ~InterfacePrincipale();
     void resizeEvent(QResizeEvent*);
-
+    void majImage1(cv::Mat image);
+    void majImage2(cv::Mat image);
+    void majImage3(cv::Mat image);
+    void majImage4(cv::Mat image);
+    GestionImage gestionImage;
    
 private slots:
 	void importerUneImage();
@@ -26,7 +36,8 @@ private slots:
 
 private:
     Ui::InterfacePrincipale *ui;
-    GestionImage gestionImage;
+    cv::Mat redimensionner(cv::Mat image);
+    
 };
 
 #endif // INTERFACEPRINCIPALE_H

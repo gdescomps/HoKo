@@ -32,55 +32,25 @@ void InterfacePrincipale::importerUneImage()
 	char* cheminImage = nomImage.toLocal8Bit().data();
 
 	gestionImage.setImageOriginale(cv::imread(cheminImage));
-	cv::Mat imageMat = gestionImage.getImageOriginale(); 
 	
+	cv::Mat imageMat=gestionImage.getImageOriginale();
 
-	double largeurFinale = ui->label->width();
-	double largeurInitiale = imageMat.cols;
-
-	double echelle = largeurFinale/largeurInitiale;
-	
-	echelle = echelle-fmod(echelle,0.05);
-
-	/*printf("largeurFinale : %f \n", largeurFinale);
-	printf("largeurInitiale : %f \n", largeurInitiale);
-
-	printf("echelle : %f \n", echelle);*/
-	
-	/*printf("Largeur 1 : %d \n", imageMat.cols);
-	printf("Hauteur 1 : %d \n", imageMat.rows);*/
-
-	cv::resize(imageMat, imageMat, cv::Size(), echelle, echelle);
-	
-	/*printf("Largeur 2 : %d \n", imageMat.cols);
-	printf("Hauteur 2 : %d \n", imageMat.rows);*/
-
-	QImage imageQ = QImage((const unsigned char*)imageMat.data,imageMat.cols,imageMat.rows,QImage::Format_RGB888).rgbSwapped();
-	ui->label->setPixmap(QPixmap::fromImage(imageQ));
-	ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
-	ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
-	ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
+	majImage1(imageMat);
+	majImage2(imageMat);
+	majImage3(imageMat);
+	majImage4(imageMat);
 }
 
 void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 {
-	//printf("Resize \n");
 	if(gestionImage.isImportee()){
-		cv::Mat imageMat=gestionImage.getImageOriginale();
 		
-		double largeurFinale = ui->label->width();
-		double largeurInitiale = imageMat.cols;
+		cv::Mat imageMat=gestionImage.getImageOriginale();
 
-		double echelle = largeurFinale/largeurInitiale;
-		echelle = echelle-fmod(echelle,0.05);
-
-		cv::resize(imageMat, imageMat, cv::Size(), echelle, echelle);
-
-		QImage imageQ = QImage((const unsigned char*)imageMat.data,imageMat.cols,imageMat.rows,QImage::Format_RGB888).rgbSwapped();
-		ui->label->setPixmap(QPixmap::fromImage(imageQ));
-		ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
-		ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
-		ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
+		majImage1(imageMat);
+		majImage2(imageMat);
+		majImage3(imageMat);
+		majImage4(imageMat);
 	}
 }
 
@@ -91,18 +61,40 @@ void InterfacePrincipale::on_ajouterBouton_clicked()
 	    FenetreModifier *fenMod = new FenetreModifier(this);
 	    fenMod->show();
 	}
-    /*
-    cv::Mat imageFloue;
-    cv::GaussianBlur(imageOriginale, imageFloue, cv::Size(101,101), -1);
+}
 
-    double largeurFinale = ui->label->width();
-	double largeurInitiale = imageFloue.cols;
+void InterfacePrincipale::majImage1(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image1->setPixmap(QPixmap::fromImage(imageQ));
+}
+
+void InterfacePrincipale::majImage2(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image2->setPixmap(QPixmap::fromImage(imageQ));
+}
+
+void InterfacePrincipale::majImage3(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image3->setPixmap(QPixmap::fromImage(imageQ));
+}
+
+void InterfacePrincipale::majImage4(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image4->setPixmap(QPixmap::fromImage(imageQ));
+}
+
+cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
+
+	double largeurFinale = ui->image1->width();
+	double largeurInitiale = image.cols;
 
 	double echelle = largeurFinale/largeurInitiale;
 	echelle = echelle-fmod(echelle,0.05);
 
-	cv::resize(imageFloue, imageFloue, cv::Size(), echelle, echelle);
-    QImage imageQ = QImage((const unsigned char*)imageFloue.data,imageFloue.cols,imageFloue.rows,QImage::Format_RGB888).rgbSwapped();
-    ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
-    */
+	cv::resize(image, image, cv::Size(), echelle, echelle);
+	return image;
 }
