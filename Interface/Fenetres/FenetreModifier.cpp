@@ -1,0 +1,70 @@
+#include "FenetreModifier.h"
+#include "ui_FenetreModifier.h"
+#include "Interface/InterfacePrincipale.h"
+
+FenetreModifier::FenetreModifier(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::FenetreModifier)
+{
+    ui->setupUi(this);
+}
+FenetreModifier::FenetreModifier(InterfacePrincipale* interface, QWidget *parent) :
+	QDialog(parent),
+    ui(new Ui::FenetreModifier)
+{
+    ui->setupUi(this);
+    this->interface=interface;
+
+    interface->majImage3(flouGaussien(ui->spinBoxLargeurNoyau->value(),ui->spinBoxHauteurNoyau->value(),ui->doubleSpinBoxSigma->value()));
+
+}
+FenetreModifier::~FenetreModifier()
+{
+    delete ui;
+}
+void FenetreModifier::on_validerBouton_clicked()
+{
+    this->~FenetreModifier();
+}
+
+void FenetreModifier::on_pushButton_clicked()
+{
+    this->~FenetreModifier();
+}
+
+void FenetreModifier::on_spinBoxLargeurNoyau_valueChanged(int largeurNoyau)
+{
+    if(largeurNoyau%2!=1){//largeurNoyau doit être impaire
+    	ui->spinBoxLargeurNoyau->setValue(largeurNoyau+1);
+    }
+    interface->majImage3(flouGaussien(
+    								ui->spinBoxLargeurNoyau->value(),
+    								ui->spinBoxHauteurNoyau->value(),
+    								ui->doubleSpinBoxSigma->value()
+    								));
+}
+
+void FenetreModifier::on_spinBoxHauteurNoyau_valueChanged(int hauteurNoyau)
+{
+    if(hauteurNoyau%2!=1)//hauteurNoyau doit être impaire
+    	ui->spinBoxHauteurNoyau->setValue(hauteurNoyau+1);
+    interface->majImage3(flouGaussien(
+    								ui->spinBoxLargeurNoyau->value(),
+    								ui->spinBoxHauteurNoyau->value(),
+    								ui->doubleSpinBoxSigma->value()
+    								));
+}
+
+void FenetreModifier::on_doubleSpinBoxSigma_valueChanged(double sigma)
+{
+    interface->majImage3(flouGaussien(ui->spinBoxLargeurNoyau->value(),
+    								ui->spinBoxHauteurNoyau->value(),
+    								sigma));
+}
+
+cv::Mat FenetreModifier::flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma){
+
+	cv::Mat imageFloue;
+    cv::GaussianBlur(interface->gestionImage.getImageOriginale(), imageFloue, cv::Size(largeurNoyau,hauteurNoyau), sigma);
+    return imageFloue;
+}

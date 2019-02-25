@@ -1,5 +1,8 @@
 #include "Interface/InterfacePrincipale.h"
 #include "ui_InterfacePrincipale.h"
+#include "Fenetres/FenetreModifier.h"
+#include "Image/GestionImage.h"
+
 #include <opencv2/opencv.hpp>
 #include <QFileDialog>
 #include <opencv2/imgproc.hpp>
@@ -25,12 +28,13 @@
 using namespace std;
 using namespace cv;
 
-InterfacePrincipale::InterfacePrincipale(QWidget *parent) :
-	QMainWindow(parent),
-	ui(new Ui::InterfacePrincipale)
+
+InterfacePrincipale::InterfacePrincipale(GestionImage gestionImage, QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::InterfacePrincipale)
 {
-	imageImportee=false;
-	ui->setupUi(this);
+    ui->setupUi(this);
+    gestionImage = gestionImage;
 }
 
 InterfacePrincipale::~InterfacePrincipale()
@@ -44,43 +48,33 @@ void InterfacePrincipale::importerUneImage()
 	
 	char* cheminImage = nomImage.toLocal8Bit().data();
 
-	 imageOriginale = cv::imread(cheminImage);
-	cv::Mat imageMat = imageOriginale;
-
-	double largeurFinale = ui->label->width();
-	double largeurInitiale = imageMat.cols;
-
-	double echelle = largeurFinale / largeurInitiale;
+	gestionImage.setImageOriginale(cv::imread(cheminImage));
 	
+	cv::Mat imageMat=gestionImage.getImageOriginale();
 
+	majImage1(imageMat);
+	majImage2(imageMat);
+	majImage3(imageMat);
+	majImage4(imageMat);
+}
 
-	echelle = echelle - fmod(echelle, 0.05);
-	
+void InterfacePrincipale::resizeEvent(QResizeEvent* event)
+{
+	if(gestionImage.isImportee()){
+		
+		cv::Mat imageMat=gestionImage.getImageOriginale();
 
-	/*printf("largeurFinale : %f \n", largeurFinale);
-	printf("largeurInitiale : %f \n", largeurInitiale);
-	printf("echelle : %f \n", echelle);*/
-
-	/*printf("Largeur 1 : %d \n", imageMat.cols);
-	printf("Hauteur 1 : %d \n", imageMat.rows);*/
-
-	cv::resize(imageMat, imageMat, cv::Size(), echelle, echelle);
-
-	/*printf("Largeur 2 : %d \n", imageMat.cols);
-	printf("Hauteur 2 : %d \n", imageMat.rows);*/
-
-	QImage imageQ = QImage((const unsigned char*)imageMat.data, imageMat.cols, imageMat.rows, QImage::Format_RGB888).rgbSwapped();
-	ui->label->setPixmap(QPixmap::fromImage(imageQ));
-	ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
-	ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
-	ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
-	 imageImportee = true;
+		majImage1(imageMat);
+		majImage2(imageMat);
+		majImage3(imageMat);
+		majImage4(imageMat);
+	}
 }
 void InterfacePrincipale::sauvegarderImageFinale()
 {
-	if (ui->label_4->pixmap()) {
+	if (gestionImage.isImportee()) {
 			//On recupere la dernière image (label4) au format Qpixmap
-			const QPixmap *imageQ = ui->label_4->pixmap();
+			const QPixmap *imageQ = ui->image4->pixmap();
 			//Conversion du Qpixmap en Qimage
 			QImage monImage = imageQ->toImage();
 			//Choix de l'emplacement de la photo
@@ -141,25 +135,48 @@ void InterfacePrincipale::afficherApropos()
 }
 
 
-void InterfacePrincipale::resizeEvent(QResizeEvent* event)
+
+void InterfacePrincipale::on_ajouterBouton_clicked()
 {
-	//printf("Resize \n");
-	if (imageImportee) {
-		cv::Mat imageMat = imageOriginale;
-		double largeurFinale = ui->label->width();
-		double largeurInitiale = imageMat.cols;
 
-		double echelle = largeurFinale / largeurInitiale;
-		echelle = echelle - fmod(echelle, 0.05);
-
-		cv::resize(imageMat, imageMat, cv::Size(), echelle, echelle);
-
-		QImage imageQ = QImage((const unsigned char*)imageMat.data, imageMat.cols, imageMat.rows, QImage::Format_RGB888).rgbSwapped();
-		ui->label->setPixmap(QPixmap::fromImage(imageQ));
-		ui->label_2->setPixmap(QPixmap::fromImage(imageQ));
-		ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
-		ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
+    if(gestionImage.isImportee()){
+	    FenetreModifier *fenMod = new FenetreModifier(this);
+	    fenMod->show();
 	}
 }
 
+void InterfacePrincipale::majImage1(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image1->setPixmap(QPixmap::fromImage(imageQ));
+}
 
+void InterfacePrincipale::majImage2(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image2->setPixmap(QPixmap::fromImage(imageQ));
+}
+
+void InterfacePrincipale::majImage3(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image3->setPixmap(QPixmap::fromImage(imageQ));
+}
+
+void InterfacePrincipale::majImage4(cv::Mat image){
+	image = redimensionner(image);
+	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
+	ui->image4->setPixmap(QPixmap::fromImage(imageQ));
+}
+
+cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
+
+	double largeurFinale = ui->image1->width();
+	double largeurInitiale = image.cols;
+
+	double echelle = largeurFinale/largeurInitiale;
+	echelle = echelle-fmod(echelle,0.05);
+
+	cv::resize(image, image, cv::Size(), echelle, echelle);
+	return image;
+}

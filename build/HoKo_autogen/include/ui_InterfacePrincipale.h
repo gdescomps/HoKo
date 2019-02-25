@@ -42,10 +42,10 @@ public:
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QGridLayout *gridLayout_2;
-    QLabel *label_2;
-    QLabel *label_4;
-    QLabel *label;
-    QLabel *label_3;
+    QLabel *image2;
+    QLabel *image3;
+    QLabel *image1;
+    QLabel *image4;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QListWidget *listWidget;
@@ -57,7 +57,7 @@ public:
     QPushButton *pushButton;
     QHBoxLayout *horizontalLayout_3;
     QComboBox *comboBox;
-    QPushButton *pushButton_5;
+    QPushButton *ajouterBouton;
     QMenuBar *menuBar;
     QMenu *menuHoKo;
     QMenu *menuCOnfiguration;
@@ -95,43 +95,43 @@ public:
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setSpacing(6);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        image2 = new QLabel(centralWidget);
+        image2->setObjectName(QString::fromUtf8("image2"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy);
-        label_2->setFrameShape(QFrame::StyledPanel);
+        sizePolicy.setHeightForWidth(image2->sizePolicy().hasHeightForWidth());
+        image2->setSizePolicy(sizePolicy);
+        image2->setFrameShape(QFrame::StyledPanel);
 
-        gridLayout_2->addWidget(label_2, 0, 1, 1, 1);
+        gridLayout_2->addWidget(image2, 0, 1, 1, 1);
 
-        label_4 = new QLabel(centralWidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        sizePolicy.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
-        label_4->setSizePolicy(sizePolicy);
-        label_4->setFrameShape(QFrame::StyledPanel);
-        label_4->setFrameShadow(QFrame::Plain);
+        image3 = new QLabel(centralWidget);
+        image3->setObjectName(QString::fromUtf8("image3"));
+        sizePolicy.setHeightForWidth(image3->sizePolicy().hasHeightForWidth());
+        image3->setSizePolicy(sizePolicy);
+        image3->setFrameShape(QFrame::StyledPanel);
+        image3->setFrameShadow(QFrame::Plain);
 
-        gridLayout_2->addWidget(label_4, 1, 0, 1, 1);
+        gridLayout_2->addWidget(image3, 1, 0, 1, 1);
 
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy);
-        label->setAutoFillBackground(false);
-        label->setFrameShape(QFrame::StyledPanel);
-        label->setFrameShadow(QFrame::Plain);
+        image1 = new QLabel(centralWidget);
+        image1->setObjectName(QString::fromUtf8("image1"));
+        sizePolicy.setHeightForWidth(image1->sizePolicy().hasHeightForWidth());
+        image1->setSizePolicy(sizePolicy);
+        image1->setAutoFillBackground(false);
+        image1->setFrameShape(QFrame::StyledPanel);
+        image1->setFrameShadow(QFrame::Plain);
 
-        gridLayout_2->addWidget(label, 0, 0, 1, 1);
+        gridLayout_2->addWidget(image1, 0, 0, 1, 1);
 
-        label_3 = new QLabel(centralWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        sizePolicy.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy);
-        label_3->setFrameShape(QFrame::StyledPanel);
+        image4 = new QLabel(centralWidget);
+        image4->setObjectName(QString::fromUtf8("image4"));
+        sizePolicy.setHeightForWidth(image4->sizePolicy().hasHeightForWidth());
+        image4->setSizePolicy(sizePolicy);
+        image4->setFrameShape(QFrame::StyledPanel);
 
-        gridLayout_2->addWidget(label_3, 1, 1, 1, 1);
+        gridLayout_2->addWidget(image4, 1, 1, 1, 1);
 
 
         horizontalLayout->addLayout(gridLayout_2);
@@ -209,10 +209,10 @@ public:
 
         horizontalLayout_3->addWidget(comboBox);
 
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        ajouterBouton = new QPushButton(centralWidget);
+        ajouterBouton->setObjectName(QString::fromUtf8("ajouterBouton"));
 
-        horizontalLayout_3->addWidget(pushButton_5);
+        horizontalLayout_3->addWidget(ajouterBouton);
 
 
         verticalLayout->addLayout(horizontalLayout_3);
@@ -263,10 +263,10 @@ public:
         actionSauvegarder_l_image_finale->setText(QApplication::translate("InterfacePrincipale", "Sauvegarder l'image finale", nullptr));
         actionAide->setText(QApplication::translate("InterfacePrincipale", "Guide d'utilisation", nullptr));
         actionVersion->setText(QApplication::translate("InterfacePrincipale", "\303\200 propos de HoKo", nullptr));
-        label_2->setText(QString());
-        label_4->setText(QString());
-        label->setText(QString());
-        label_3->setText(QString());
+        image2->setText(QString());
+        image3->setText(QString());
+        image1->setText(QString());
+        image4->setText(QString());
 
         const bool __sortingEnabled = listWidget->isSortingEnabled();
         listWidget->setSortingEnabled(false);
@@ -295,7 +295,7 @@ public:
         comboBox->setItemText(3, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         comboBox->setItemText(4, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
 
-        pushButton_5->setText(QApplication::translate("InterfacePrincipale", "Ajouter", nullptr));
+        ajouterBouton->setText(QApplication::translate("InterfacePrincipale", "Ajouter", nullptr));
         menuHoKo->setTitle(QApplication::translate("InterfacePrincipale", "Image", nullptr));
         menuCOnfiguration->setTitle(QApplication::translate("InterfacePrincipale", "Configuration", nullptr));
         menuAide->setTitle(QApplication::translate("InterfacePrincipale", "Aide", nullptr));
