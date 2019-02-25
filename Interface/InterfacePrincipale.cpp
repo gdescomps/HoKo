@@ -7,27 +7,29 @@
 #include <stdio.h>
 #include <cmath>
 #include <QResizeEvent>
-#include "InterfacePrincipale.h"
-#include "ui_InterfacePrincipale.h"
-
 
 #include <qdesktopservices.h>
 #include <QtWidgets/qtwidgetsglobal.h>
 #include <string>
 #include <qmessagebox.h>
 #include <iostream>
-#include <windows.h>
-#include <libloaderapi.h>
-#include <qpainter.h>
+
+#if defined(Q_OS_WIN32) // Includes pour la compilation sous Windows
+	#include <windows.h>
+	#include <libloaderapi.h>
+
+	#include <qpainter.h>
+#endif // Fin des includes pour Windows
+
+
 using namespace std;
 using namespace cv;
-
-
 
 InterfacePrincipale::InterfacePrincipale(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::InterfacePrincipale)
 {
+	imageImportee=false;
 	ui->setupUi(this);
 }
 
@@ -82,14 +84,14 @@ void InterfacePrincipale::sauvegarderImageFinale()
 			//Conversion du Qpixmap en Qimage
 			QImage monImage = imageQ->toImage();
 			//Choix de l'emplacement de la photo
-			QString filename = QFileDialog::getSaveFileName(this, tr("Sauvegarder l'inmage"), QDir::currentPath());
+			QString filename = QFileDialog::getSaveFileName(this, tr("Sauvegarder l'image"), QDir::currentPath());
 			//Sauvegarde de l'image à l'emplacement souhaité
 			monImage.save(filename);
 		}
 	else
 		{
 			//Si aucune image n'a été importé
-			QMessageBox::critical(this, tr("Erreur"), tr("Importez d'abord une Image"));
+			QMessageBox::critical(this, tr("Erreur"), tr("Importez d'abord une image"));
 			importerUneImage();
 		}
 
@@ -106,15 +108,15 @@ void InterfacePrincipale::afficherGuide()
 	//Conversion d'une chaine string en qstring
 	QString qpath = QString::fromStdString(string(buffer).substr(0, pos));
 
+#elif defined(Q_OS_UNIX)
+	QString qpath = QCoreApplication::applicationDirPath();
+#endif
+
 	if (!QDesktopServices::openUrl(QUrl::fromLocalFile(qpath + "/GuideHoko.pdf")))
 	{
 		//En cas d'erreur un fenetre d'erreur s'ouvre
-		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier...."));
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier..."));
 	}
-	//Sous windows la commande por ouvrir une cmd et ouvrir le pdf
-	//system("start C:\CheminAbsolue\GuideHoko.pdf");
-#elif defined(Q_OS_UNIX)
-#endif
 
 }
 void InterfacePrincipale::afficherApropos()
@@ -127,20 +129,19 @@ void InterfacePrincipale::afficherApropos()
 	string::size_type pos = string(buffer).find_last_of("\\/");
 	//Conversion d'une chaine string en qstring
 	QString qpath = QString::fromStdString(string(buffer).substr(0, pos));
-	if (!QDesktopServices::openUrl(QUrl::fromLocalFile(qpath + "/Apropos.pdf")))
-		{
-			//En cas d'erreur un fenetre d'erreur s'ouvre
-			QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier...."));
-		}
-	//Sous windows la commande por ouvrir une cmd et ouvrir le pdf
-	//system("start C:\CheminAbsolue\GuideHoko.pdf");
+	
 #elif defined(Q_OS_UNIX)
+	QString qpath = QCoreApplication::applicationDirPath();
 #endif
-
+	if (!QDesktopServices::openUrl(QUrl::fromLocalFile(qpath + "/Apropos.pdf")))
+	{
+		//En cas d'erreur un fenetre d'erreur s'ouvre
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier..."));
+	}
 }
 
 
-/*void InterfacePrincipale::resizeEvent(QResizeEvent* event)
+void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 {
 	//printf("Resize \n");
 	if (imageImportee) {
@@ -159,6 +160,6 @@ void InterfacePrincipale::afficherApropos()
 		ui->label_3->setPixmap(QPixmap::fromImage(imageQ));
 		ui->label_4->setPixmap(QPixmap::fromImage(imageQ));
 	}
-}*/
+}
 
 

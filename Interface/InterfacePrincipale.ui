@@ -347,7 +347,39 @@
    <sender>actionSauvegarder_l_image_finale</sender>
    <signal>triggered()</signal>
    <receiver>InterfacePrincipale</receiver>
-   <slot>importerUneImage()</slot>
+   <slot>sauvegarderImageFinale()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionAide</sender>
+   <signal>triggered()</signal>
+   <receiver>InterfacePrincipale</receiver>
+   <slot>afficherGuide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionVersion</sender>
+   <signal>triggered()</signal>
+   <receiver>InterfacePrincipale</receiver>
+   <slot>afficherApropos()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
