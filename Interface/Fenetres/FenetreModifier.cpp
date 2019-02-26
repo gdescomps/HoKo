@@ -8,6 +8,7 @@ FenetreModifier::FenetreModifier(QWidget *parent) :
 {
     ui->setupUi(this);
 }
+
 FenetreModifier::FenetreModifier(InterfacePrincipale* interface, QWidget *parent) :
 	QDialog(parent),
     ui(new Ui::FenetreModifier)
@@ -22,12 +23,13 @@ FenetreModifier::~FenetreModifier()
 {
     delete ui;
 }
+
 void FenetreModifier::on_validerBouton_clicked()
 {
     this->~FenetreModifier();
 }
 
-void FenetreModifier::on_pushButton_clicked()
+void FenetreModifier::on_annulerBouton_clicked()
 {
     this->~FenetreModifier();
 }
@@ -61,6 +63,7 @@ void FenetreModifier::on_doubleSpinBoxSigma_valueChanged(double sigma)
     								ui->spinBoxHauteurNoyau->value(),
     								sigma));
 }
+
 
 cv::Mat FenetreModifier::flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma){
 

@@ -68,7 +68,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="annulerBouton">
        <property name="text">
         <string>Annuler</string>
        </property>

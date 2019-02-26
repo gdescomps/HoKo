@@ -1,7 +1,5 @@
 #include "Image/GestionImage.h"
 
-//bool GestionImage::importee=0;
-
 GestionImage::GestionImage(){
 	importee=false;
 }
