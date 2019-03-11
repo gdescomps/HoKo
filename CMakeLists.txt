@@ -21,6 +21,8 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # Populate a CMake variable with the sources
 set(HoKo_SRCS
+	Traitement/Traitement.h
+	Traitement/FlouGaussien.cpp
 	Image/GestionImage.cpp
 	Image/GestionImage.h
 	Interface/Fenetres/FenetreModifier.cpp

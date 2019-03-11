@@ -1,6 +1,7 @@
 #include "FenetreModifier.h"
 #include "ui_FenetreModifier.h"
 #include "Interface/InterfacePrincipale.h"
+#include "Traitement/FlouGaussien.cpp"
 
 FenetreModifier::FenetreModifier(QWidget *parent) :
     QDialog(parent),
@@ -66,8 +67,13 @@ void FenetreModifier::on_doubleSpinBoxSigma_valueChanged(double sigma)
 
 
 cv::Mat FenetreModifier::flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma){
-
 	cv::Mat imageFloue;
-    cv::GaussianBlur(interface->gestionImage.getImageOriginale(), imageFloue, cv::Size(largeurNoyau,hauteurNoyau), sigma);
+    //cv::GaussianBlur(interface->gestionImage.getImageOriginale(), imageFloue, cv::Size(largeurNoyau,hauteurNoyau), sigma);
+    Traitement* unTraitement;
+   
+    unTraitement = new FlouGaussien;
+
+    imageFloue=static_cast<FlouGaussien*>(unTraitement)->appliquer(interface->gestionImage.getImageOriginale(), largeurNoyau, hauteurNoyau, sigma);
+
     return imageFloue;
 }
