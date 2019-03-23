@@ -5,6 +5,7 @@
 
 #include "Image/GestionImage.h"
 #include "Traitement/GestionTraitement.h"
+#include "Controleur.h"
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
@@ -17,6 +18,8 @@ namespace Ui {
 
 class InterfacePrincipale;
 }
+
+class Controleur;
 
 /**
 * Interface Principale de l'application
@@ -31,7 +34,7 @@ public:
  * \param    gestionImage       GestionImage gestionnaire des images.
  * \param    parent             QWidget *
  */
-    explicit InterfacePrincipale(GestionImage gestionImage, GestionTraitement gestionTraitement,  QWidget *parent = 0);
+    explicit InterfacePrincipale(Controleur *controleur,  QWidget *parent = 0);
     
     ~InterfacePrincipale();
 
@@ -63,6 +66,8 @@ public:
     GestionImage gestionImage; 
 
     GestionTraitement gestionTraitement;
+
+    Controleur* controleur;
    
 private slots:
     /**

@@ -5,6 +5,7 @@
 #include "Image/GestionImage.h"
 #include "Traitement/GestionTraitement.h"
 
+class InterfacePrincipale;
 class Controleur {
 
 	private:
@@ -13,17 +14,11 @@ class Controleur {
 		InterfacePrincipale* interface;
 
 	public:
-		Controleur(){
-			gestionImage = new GestionImage;
-			gestionTraitement = new GestionTraitement;
-			interface = new InterfacePrincipale(*gestionImage, *gestionTraitement);
-			
-		}
+		Controleur();
 
-		InterfacePrincipale* getInterface(){
-			return this->interface;
-		}
-
+		InterfacePrincipale* getInterface();
+		
+	
 
 };
 

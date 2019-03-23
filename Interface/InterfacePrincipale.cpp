@@ -30,13 +30,14 @@ using namespace std;
 using namespace cv;
 
 
-InterfacePrincipale::InterfacePrincipale(GestionImage gestionImage, GestionTraitement gestionTraitement, QWidget *parent) :
+InterfacePrincipale::InterfacePrincipale(Controleur *controleur, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::InterfacePrincipale)
 {
     ui->setupUi(this);
-    gestionImage = gestionImage;
-    gestionTraitement = gestionTraitement;
+    this->controleur=controleur;
+    // gestionImage = gestionImage;
+    // gestionTraitement = gestionTraitement;
 }
 
 InterfacePrincipale::~InterfacePrincipale()

@@ -33,6 +33,7 @@ set(HoKo_SRCS
     Interface/InterfacePrincipale.h
     Interface/InterfacePrincipale.ui
     Controleur.h
+    Controleur.cpp
     main.cpp
 )
 
