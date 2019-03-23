@@ -36,7 +36,9 @@ InterfacePrincipale::InterfacePrincipale(Controleur *controleur, QWidget *parent
 {
     ui->setupUi(this);
     this->controleur=controleur;
-    // gestionImage = gestionImage;
+    
+    // gestionImage = controleur->getGestionImage();
+    
     // gestionTraitement = gestionTraitement;
 }
 
@@ -52,9 +54,9 @@ void InterfacePrincipale::importerUneImage()
 	
 	char* cheminImage = nomImage.toLocal8Bit().data();
 
-	gestionImage.setImageOriginale(cv::imread(cheminImage));
+	controleur->getGestionImage()->setImageOriginale(cv::imread(cheminImage));
 	
-	cv::Mat imageMat=gestionImage.getImageOriginale();
+	cv::Mat imageMat=controleur->getGestionImage()->getImageOriginale();
 
 	majImage1(imageMat);
 	majImage2(imageMat);
@@ -65,9 +67,9 @@ void InterfacePrincipale::importerUneImage()
 
 void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 {
-	if(gestionImage.isImportee()){
+	if(controleur->getGestionImage()->isImportee()){
 		
-		cv::Mat imageMat=gestionImage.getImageOriginale();
+		cv::Mat imageMat=controleur->getGestionImage()->getImageOriginale();
 
 		majImage1(imageMat);
 		majImage2(imageMat);
@@ -79,7 +81,7 @@ void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 
 void InterfacePrincipale::sauvegarderImageFinale()
 {
-	if (gestionImage.isImportee()) {
+	if (controleur->getGestionImage()->isImportee()) {
 			//On recupere la dernière image (label4) au format Qpixmap
 			const QPixmap *imageQ = ui->image4->pixmap();
 			//Conversion du Qpixmap en Qimage
@@ -146,7 +148,7 @@ void InterfacePrincipale::afficherApropos()
 void InterfacePrincipale::on_ajouterBouton_clicked()
 {
 
-    if(gestionImage.isImportee()){
+    if(controleur->getGestionImage()->isImportee()){
 	    FenetreModifier *fenMod = new FenetreModifier(this);
 	    fenMod->show();
 	}

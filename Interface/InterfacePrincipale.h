@@ -63,9 +63,9 @@ public:
     void majImage4(cv::Mat image);
 
     /** Gestionnaire des images */
-    GestionImage gestionImage; 
+    // GestionImage *gestionImage; 
 
-    GestionTraitement gestionTraitement;
+    // GestionTraitement gestionTraitement;
 
     Controleur* controleur;
    

@@ -73,7 +73,7 @@ cv::Mat FenetreModifier::flouGaussien(int largeurNoyau, int hauteurNoyau, double
    
     unTraitement = new FlouGaussien;
 
-    imageFloue=static_cast<FlouGaussien*>(unTraitement)->appliquer(interface->gestionImage.getImageOriginale(), largeurNoyau, hauteurNoyau, sigma);
+    imageFloue=static_cast<FlouGaussien*>(unTraitement)->appliquer(interface->controleur->getGestionImage()->getImageOriginale(), largeurNoyau, hauteurNoyau, sigma);
 
     return imageFloue;
 }

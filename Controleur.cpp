@@ -10,3 +10,7 @@ Controleur::Controleur(){
 InterfacePrincipale* Controleur::getInterface(){
 	return this->interface;
 }
+
+GestionImage* Controleur::getGestionImage(){
+	return this->gestionImage;
+}

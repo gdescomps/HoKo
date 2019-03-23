@@ -17,8 +17,8 @@ class Controleur {
 		Controleur();
 
 		InterfacePrincipale* getInterface();
-		
-	
+		GestionImage* getGestionImage();
+
 
 };
 
