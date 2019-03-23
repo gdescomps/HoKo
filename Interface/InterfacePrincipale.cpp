@@ -2,6 +2,7 @@
 #include "ui_InterfacePrincipale.h"
 #include "Fenetres/FenetreModifier.h"
 #include "Image/GestionImage.h"
+#include "Traitement/GestionTraitement.h"
 
 #include <opencv2/opencv.hpp>
 #include <QFileDialog>
@@ -29,12 +30,13 @@ using namespace std;
 using namespace cv;
 
 
-InterfacePrincipale::InterfacePrincipale(GestionImage gestionImage, QWidget *parent) :
+InterfacePrincipale::InterfacePrincipale(GestionImage gestionImage, GestionTraitement gestionTraitement, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::InterfacePrincipale)
 {
     ui->setupUi(this);
     gestionImage = gestionImage;
+    gestionTraitement = gestionTraitement;
 }
 
 InterfacePrincipale::~InterfacePrincipale()

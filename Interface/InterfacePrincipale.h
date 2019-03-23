@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "Image/GestionImage.h"
+#include "Traitement/GestionTraitement.h"
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
@@ -30,7 +31,7 @@ public:
  * \param    gestionImage       GestionImage gestionnaire des images.
  * \param    parent             QWidget *
  */
-    explicit InterfacePrincipale(GestionImage gestionImage, QWidget *parent = 0);
+    explicit InterfacePrincipale(GestionImage gestionImage, GestionTraitement gestionTraitement,  QWidget *parent = 0);
     
     ~InterfacePrincipale();
 
@@ -60,6 +61,8 @@ public:
 
     /** Gestionnaire des images */
     GestionImage gestionImage; 
+
+    GestionTraitement gestionTraitement;
    
 private slots:
     /**

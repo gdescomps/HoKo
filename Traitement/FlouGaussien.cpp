@@ -8,10 +8,20 @@ class FlouGaussien : public Traitement{
 		FlouGaussien() {}
 		~FlouGaussien() {};
 
-		cv::Mat appliquer(cv::Mat imageEntree, int largeurNoyau, int hauteurNoyau, double sigma){
+		cv::Mat appliquer(cv::Mat imageEntree, int largeurNoyau, int hauteurNoyau, double sigma)
+		{
+			this->largeurNoyau=largeurNoyau;
+			this->hauteurNoyau=hauteurNoyau;
+			this->sigma=sigma;
 		    cv::GaussianBlur(imageEntree, this->imageTraitee, cv::Size(largeurNoyau,hauteurNoyau), sigma);
 		    return imageTraitee;
 		}
+
+	private:
+		int largeurNoyau;
+		int hauteurNoyau;
+		double sigma;
+
 };
 
 #endif // FLOUGAUSSIEN_H

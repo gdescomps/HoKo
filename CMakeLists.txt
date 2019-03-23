@@ -23,6 +23,7 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 set(HoKo_SRCS
 	Traitement/Traitement.h
 	Traitement/FlouGaussien.cpp
+	Traitement/GestionTraitement.h
 	Image/GestionImage.cpp
 	Image/GestionImage.h
 	Interface/Fenetres/FenetreModifier.cpp
