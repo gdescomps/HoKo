@@ -9,12 +9,8 @@
 			std::list<Traitement*> traitements;
 
 		public:
-			void ajouterTraitement(Traitement* t){ 
-				traitements.push_back(t); 
-			}
-			std::list<Traitement*> recupererTraitement(){
-				return traitements;
-			}
+			void ajouterTraitement(Traitement* t);
+			std::list<Traitement*> recupererTraitement();
 
 	};
 
