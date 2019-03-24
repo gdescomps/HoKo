@@ -6,7 +6,7 @@
 class FlouGaussien : public Traitement{
 	public:
 		FlouGaussien() {}
-		~FlouGaussien() {};
+		~FlouGaussien() {}
 
 		cv::Mat appliquer(cv::Mat imageEntree, int largeurNoyau, int hauteurNoyau, double sigma)
 		{

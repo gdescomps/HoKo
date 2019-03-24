@@ -107,6 +107,7 @@ private slots:
     * Met à jour l'affichage des images. Déclenchée lors d'un redimensionnement de la fenêtre principale.
     */
     void resizeEvent(QResizeEvent*);
+
     
 private:
     Ui::InterfacePrincipale *ui;

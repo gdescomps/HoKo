@@ -48,7 +48,7 @@ public:
     QLabel *image4;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
-    QListWidget *listWidget;
+    QListWidget *listeTraitements;
     QCheckBox *checkBox;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_2;
@@ -56,7 +56,7 @@ public:
     QPushButton *pushButton_4;
     QPushButton *pushButton;
     QHBoxLayout *horizontalLayout_3;
-    QComboBox *comboBox;
+    QComboBox *choixTraitement;
     QPushButton *ajouterBouton;
     QMenuBar *menuBar;
     QMenu *menuHoKo;
@@ -143,22 +143,22 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        listWidget = new QListWidget(centralWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listeTraitements = new QListWidget(centralWidget);
+        new QListWidgetItem(listeTraitements);
+        new QListWidgetItem(listeTraitements);
+        new QListWidgetItem(listeTraitements);
+        new QListWidgetItem(listeTraitements);
+        new QListWidgetItem(listeTraitements);
+        new QListWidgetItem(listeTraitements);
+        listeTraitements->setObjectName(QString::fromUtf8("listeTraitements"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
-        listWidget->setSizePolicy(sizePolicy1);
-        listWidget->setMinimumSize(QSize(0, 0));
+        sizePolicy1.setHeightForWidth(listeTraitements->sizePolicy().hasHeightForWidth());
+        listeTraitements->setSizePolicy(sizePolicy1);
+        listeTraitements->setMinimumSize(QSize(0, 0));
 
-        verticalLayout->addWidget(listWidget);
+        verticalLayout->addWidget(listeTraitements);
 
         checkBox = new QCheckBox(centralWidget);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
@@ -199,15 +199,15 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        comboBox = new QComboBox(centralWidget);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        choixTraitement = new QComboBox(centralWidget);
+        choixTraitement->addItem(QString());
+        choixTraitement->addItem(QString());
+        choixTraitement->addItem(QString());
+        choixTraitement->addItem(QString());
+        choixTraitement->addItem(QString());
+        choixTraitement->setObjectName(QString::fromUtf8("choixTraitement"));
 
-        horizontalLayout_3->addWidget(comboBox);
+        horizontalLayout_3->addWidget(choixTraitement);
 
         ajouterBouton = new QPushButton(centralWidget);
         ajouterBouton->setObjectName(QString::fromUtf8("ajouterBouton"));
@@ -268,32 +268,32 @@ public:
         image1->setText(QString());
         image4->setText(QString());
 
-        const bool __sortingEnabled = listWidget->isSortingEnabled();
-        listWidget->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listWidget->item(0);
+        const bool __sortingEnabled = listeTraitements->isSortingEnabled();
+        listeTraitements->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem = listeTraitements->item(0);
         ___qlistwidgetitem->setText(QApplication::translate("InterfacePrincipale", "Traitement 1", nullptr));
-        QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
+        QListWidgetItem *___qlistwidgetitem1 = listeTraitements->item(1);
         ___qlistwidgetitem1->setText(QApplication::translate("InterfacePrincipale", "Traitement 2", nullptr));
-        QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
+        QListWidgetItem *___qlistwidgetitem2 = listeTraitements->item(2);
         ___qlistwidgetitem2->setText(QApplication::translate("InterfacePrincipale", "Traitement 3", nullptr));
-        QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
+        QListWidgetItem *___qlistwidgetitem3 = listeTraitements->item(3);
         ___qlistwidgetitem3->setText(QApplication::translate("InterfacePrincipale", "Traitement 4", nullptr));
-        QListWidgetItem *___qlistwidgetitem4 = listWidget->item(4);
+        QListWidgetItem *___qlistwidgetitem4 = listeTraitements->item(4);
         ___qlistwidgetitem4->setText(QApplication::translate("InterfacePrincipale", "Traitement 5", nullptr));
-        QListWidgetItem *___qlistwidgetitem5 = listWidget->item(5);
+        QListWidgetItem *___qlistwidgetitem5 = listeTraitements->item(5);
         ___qlistwidgetitem5->setText(QApplication::translate("InterfacePrincipale", "Traitement 6", nullptr));
-        listWidget->setSortingEnabled(__sortingEnabled);
+        listeTraitements->setSortingEnabled(__sortingEnabled);
 
         checkBox->setText(QApplication::translate("InterfacePrincipale", "Actif", nullptr));
         pushButton_2->setText(QApplication::translate("InterfacePrincipale", "^", nullptr));
         pushButton_3->setText(QApplication::translate("InterfacePrincipale", "v", nullptr));
         pushButton_4->setText(QApplication::translate("InterfacePrincipale", "Modifier", nullptr));
         pushButton->setText(QApplication::translate("InterfacePrincipale", "Supprimer", nullptr));
-        comboBox->setItemText(0, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
-        comboBox->setItemText(1, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
-        comboBox->setItemText(2, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
-        comboBox->setItemText(3, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
-        comboBox->setItemText(4, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+        choixTraitement->setItemText(0, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+        choixTraitement->setItemText(1, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+        choixTraitement->setItemText(2, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+        choixTraitement->setItemText(3, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+        choixTraitement->setItemText(4, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
 
         ajouterBouton->setText(QApplication::translate("InterfacePrincipale", "Ajouter", nullptr));
         menuHoKo->setTitle(QApplication::translate("InterfacePrincipale", "Image", nullptr));
