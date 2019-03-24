@@ -2,7 +2,7 @@
 
 Controleur::Controleur(){
 	gestionImage = new GestionImage;
-	gestionTraitement = new GestionTraitement;
+	gestionTraitement = new GestionTraitement(this);
 	interface = new InterfacePrincipale(this);
 	
 }

@@ -1,6 +1,10 @@
 #include "Traitement/GestionTraitement.h"
 #include "Interface/Fenetres/FenetreModifier.h"
 
+GestionTraitement::GestionTraitement(Controleur* controleur){
+	this->controleur=controleur;
+}
+
 void GestionTraitement::ajouterTraitementListe(Traitement* t){ 
 	traitements.push_back(t); 
 }

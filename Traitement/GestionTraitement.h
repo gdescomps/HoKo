@@ -14,6 +14,8 @@
 			Controleur* controleur;
 
 		public:
+			GestionTraitement(Controleur* controleur);
+
 			void ajouterTraitementListe(Traitement* t);
 			std::list<Traitement*> recupererTraitement();
 
