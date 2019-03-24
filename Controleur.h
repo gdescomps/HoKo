@@ -6,6 +6,7 @@
 #include "Traitement/GestionTraitement.h"
 
 class InterfacePrincipale;
+class GestionTraitement;
 class Controleur {
 
 	private:

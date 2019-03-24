@@ -2,15 +2,22 @@
 #define GESTIONTRAITEMENT_H
 
 #include "Traitement/Traitement.h"
-#include <list>
+#include "Controleur.h"
 
+#include <list>
+	
+	class Controleur;
+	
 	class GestionTraitement {
 		private:
 			std::list<Traitement*> traitements;
+			Controleur* controleur;
 
 		public:
-			void ajouterTraitement(Traitement* t);
+			void ajouterTraitementListe(Traitement* t);
 			std::list<Traitement*> recupererTraitement();
+
+			void ajouterTraitement(int num);
 
 	};
 
