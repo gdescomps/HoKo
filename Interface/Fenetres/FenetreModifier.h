@@ -3,11 +3,14 @@
 
 #include <QDialog>
 #include "Interface/InterfacePrincipale.h"
+#include "Traitement/Traitement.h"
 
 namespace Ui {
 
 class FenetreModifier;
 }
+
+class Traitement;
 
 /**
 * Fenêtre de modification des paramètres d'un traitement.
@@ -24,7 +27,7 @@ public:
     * \param interface L'interface principale de l'application
     * \param parent QWidget*
     */
-    FenetreModifier(InterfacePrincipale* interface, QWidget *parent = nullptr);
+    FenetreModifier(Traitement* traitement, QWidget *parent = nullptr);
 
     ~FenetreModifier();
 
@@ -62,7 +65,9 @@ private:
     Ui::FenetreModifier *ui;
 
     /** L'interface principale de l'application */
-    InterfacePrincipale *interface;
+    // InterfacePrincipale *interface;
+
+    Traitement* traitement;
 
     int largeurNoyau;
     int hauteurNoyau;

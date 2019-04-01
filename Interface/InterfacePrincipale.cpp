@@ -1,8 +1,8 @@
 #include "Interface/InterfacePrincipale.h"
 #include "ui_InterfacePrincipale.h"
-#include "Fenetres/FenetreModifier.h"
-#include "Image/GestionImage.h"
-#include "Traitement/GestionTraitement.h"
+// #include "Fenetres/FenetreModifier.h"
+// #include "Image/GestionImage.h"
+// #include "Traitement/GestionTraitement.h"
 
 #include <opencv2/opencv.hpp>
 #include <QFileDialog>

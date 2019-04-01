@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 
-#include "Image/GestionImage.h"
-#include "Traitement/GestionTraitement.h"
+// #include "Image/GestionImage.h"
+// #include "Traitement/GestionTraitement.h"
 #include "Controleur.h"
 
 #include <opencv2/opencv.hpp>

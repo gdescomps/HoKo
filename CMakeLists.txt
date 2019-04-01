@@ -22,6 +22,7 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 # Populate a CMake variable with the sources
 set(HoKo_SRCS
 	Traitement/Traitement.h
+	Traitement/Traitement.cpp
 	Traitement/FlouGaussien.cpp
 	Traitement/GestionTraitement.h
 	Traitement/GestionTraitement.cpp

@@ -4,15 +4,19 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
 
+#include "Interface/Fenetres/FenetreModifier.h"
+
+	class FenetreModifier;
+
 	class Traitement {
 		public:
-			Traitement() {};
+			Traitement();
 			virtual ~Traitement() {};
 
 
 		protected:
 			cv::Mat imageTraitee;
-
+			FenetreModifier* fenetre;
 	};
 
 #endif // TRAITEMENT_H

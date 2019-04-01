@@ -7,6 +7,7 @@
 #include <list>
 	
 	class Controleur;
+	class Traitement;
 	
 	class GestionTraitement {
 		private:

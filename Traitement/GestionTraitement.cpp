@@ -1,6 +1,8 @@
 #include "Traitement/GestionTraitement.h"
 #include "Interface/Fenetres/FenetreModifier.h"
 
+#include "Traitement/FlouGaussien.cpp"
+
 GestionTraitement::GestionTraitement(Controleur* controleur){
 	this->controleur=controleur;
 }
@@ -14,8 +16,6 @@ std::list<Traitement*> GestionTraitement::recupererTraitement(){
 
 void GestionTraitement::ajouterTraitement(int num){
 	if(num==0){
-		// Traitement* nouveauTraitement = new FlouGaussien;
-		FenetreModifier *fenMod = new FenetreModifier();
-	    fenMod->show();
+		Traitement* nouveauTraitement = new FlouGaussien;
 	}
 }
