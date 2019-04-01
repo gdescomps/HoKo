@@ -14,3 +14,7 @@ InterfacePrincipale* Controleur::getInterface(){
 GestionImage* Controleur::getGestionImage(){
 	return this->gestionImage;
 }
+
+GestionTraitement* Controleur::getGestionTraitement(){
+	return this->gestionTraitement;
+}

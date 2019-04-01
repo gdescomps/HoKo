@@ -16,6 +16,6 @@ std::list<Traitement*> GestionTraitement::recupererTraitement(){
 
 void GestionTraitement::ajouterTraitement(int num){
 	if(num==0){
-		Traitement* nouveauTraitement = new FlouGaussien;
+		Traitement* nouveauTraitement = new FlouGaussien(this);
 	}
 }

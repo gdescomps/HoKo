@@ -37,6 +37,7 @@ class Controleur {
 		*/
 		GestionImage* getGestionImage();
 
+		GestionTraitement* getGestionTraitement();
 
 };
 

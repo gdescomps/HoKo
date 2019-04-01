@@ -147,13 +147,9 @@ void InterfacePrincipale::afficherApropos()
 
 void InterfacePrincipale::on_ajouterBouton_clicked()
 {
-	
-
-	
- //    if(controleur->getGestionImage()->isImportee()){
-	//     FenetreModifier *fenMod = new FenetreModifier(this);
-	//     fenMod->show();
-	// }
+	if(controleur->getGestionImage()->isImportee()){
+		controleur->getGestionTraitement()->ajouterTraitement(0);
+	}
 }
 
 
