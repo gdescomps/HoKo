@@ -39,6 +39,7 @@ class Controleur {
 
 		GestionTraitement* getGestionTraitement();
 
+		void majImageTraitee(cv::Mat image);
 };
 
 

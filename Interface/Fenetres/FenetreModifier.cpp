@@ -1,7 +1,7 @@
 #include "FenetreModifier.h"
 #include "ui_FenetreModifier.h"
 #include "Interface/InterfacePrincipale.h"
-// #include "Traitement/FlouGaussien.cpp"
+#include "Traitement/FlouGaussien.h"
 
 FenetreModifier::FenetreModifier(QWidget *parent) :
     QDialog(parent),
@@ -16,7 +16,7 @@ FenetreModifier::FenetreModifier(Traitement* traitement, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    traitement=traitement;
+    this->traitement=traitement;
 
     // this->interface=interface;
     // interface->majImage3(flouGaussien(ui->spinBoxLargeurNoyau->value(),ui->spinBoxHauteurNoyau->value(),ui->doubleSpinBoxSigma->value()));
@@ -42,40 +42,40 @@ void FenetreModifier::on_spinBoxLargeurNoyau_valueChanged(int largeurNoyau)
     if(largeurNoyau%2!=1){//largeurNoyau doit être impaire
     	ui->spinBoxLargeurNoyau->setValue(largeurNoyau+1);
     }
-    // interface->majImage3(flouGaussien(
-    // 								ui->spinBoxLargeurNoyau->value(),
-    // 								ui->spinBoxHauteurNoyau->value(),
-    // 								ui->doubleSpinBoxSigma->value()
-    								// ));
+
+    flouGaussien(ui->spinBoxLargeurNoyau->value(),
+                ui->spinBoxHauteurNoyau->value(),
+                ui->doubleSpinBoxSigma->value()
+                );
 }
 
 void FenetreModifier::on_spinBoxHauteurNoyau_valueChanged(int hauteurNoyau)
 {
     if(hauteurNoyau%2!=1)//hauteurNoyau doit être impaire
-    	ui->spinBoxHauteurNoyau->setValue(hauteurNoyau+1);
-    // interface->majImage3(flouGaussien(
-    //                                 ui->spinBoxLargeurNoyau->value(),
-    //                                 ui->spinBoxHauteurNoyau->value(),
-    // 								ui->doubleSpinBoxSigma->value()
-    // 								));
+        ui->spinBoxHauteurNoyau->setValue(hauteurNoyau+1);
+
+    flouGaussien(ui->spinBoxLargeurNoyau->value(),
+                ui->spinBoxHauteurNoyau->value(),
+				ui->doubleSpinBoxSigma->value()
+				);
 }
 
 void FenetreModifier::on_doubleSpinBoxSigma_valueChanged(double sigma)
 {
-    // interface->majImage3(flouGaussien(ui->spinBoxLargeurNoyau->value(),
-    //                                 ui->spinBoxHauteurNoyau->value(),
-    //                                 sigma));
+    flouGaussien(ui->spinBoxLargeurNoyau->value(),
+                ui->spinBoxHauteurNoyau->value(),
+                sigma);
 }
 
 
-cv::Mat FenetreModifier::flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma){
-	cv::Mat imageFloue;
+void FenetreModifier::flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma){
+	// cv::Mat imageFloue;
 
-    // Traitement* unTraitement;
+ //    Traitement* unTraitement;
    
-    // unTraitement = new FlouGaussien;
+     // unTraitement = new FlouGaussien;
+    // printf("traitement %d", traitement);
+    reinterpret_cast<FlouGaussien*>(traitement)->appliquer(largeurNoyau, hauteurNoyau, sigma);
 
-    // imageFloue=static_cast<FlouGaussien*>(unTraitement)->appliquer(interface->controleur->getGestionImage()->getImageOriginale(), largeurNoyau, hauteurNoyau, sigma);
-
-    return imageFloue;
+    // return imageFloue;
 }

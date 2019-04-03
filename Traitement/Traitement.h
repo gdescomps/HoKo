@@ -12,12 +12,15 @@
 
 	class Traitement {
 		public:
-			Traitement(GestionTraitement* gestionTraitement);
+			Traitement(GestionTraitement* gestionTraitement, cv::Mat imageEntree);
 			virtual ~Traitement() {};
+			cv::Mat getImageEntree();
 
 
 		protected:
+			cv::Mat imageEntree;
 			cv::Mat imageTraitee;
+
 			FenetreModifier* fenetre;
 
 			GestionTraitement* gestionTraitement;

@@ -80,7 +80,7 @@ private:
     * \param sigma Sigma du flou gaussien
     * \return Image traitée au format OpenCV Mat
     */
-    cv::Mat flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma);
+    void flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma);
 };
 
 #endif // FENETREMODIFIER_H

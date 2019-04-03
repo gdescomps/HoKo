@@ -1,9 +1,9 @@
 #include "Controleur.h"
 
 Controleur::Controleur(){
-	gestionImage = new GestionImage;
-	gestionTraitement = new GestionTraitement(this);
-	interface = new InterfacePrincipale(this);
+	this->gestionImage = new GestionImage;
+	this->gestionTraitement = new GestionTraitement(this);
+	this->interface = new InterfacePrincipale(this);
 	
 }
 
@@ -17,4 +17,9 @@ GestionImage* Controleur::getGestionImage(){
 
 GestionTraitement* Controleur::getGestionTraitement(){
 	return this->gestionTraitement;
+}
+
+void Controleur::majImageTraitee(cv::Mat image){
+	this->getInterface()->majImage3(image);
+	this->getInterface()->majImage4(image);
 }

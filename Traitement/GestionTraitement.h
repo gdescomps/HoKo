@@ -12,15 +12,22 @@
 	class GestionTraitement {
 		private:
 			std::list<Traitement*> traitements;
-			Controleur* controleur;
+			
 
 		public:
+			Controleur* controleur;
+
 			GestionTraitement(Controleur* controleur);
 
 			void ajouterTraitementListe(Traitement* t);
 			std::list<Traitement*> recupererTraitement();
 
 			void ajouterTraitement(int num);
+			void appliquerTraitement(int num);
+
+			Controleur* getControleur();
+
+			void imageTraitee(cv::Mat image);
 
 	};
 
