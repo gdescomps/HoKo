@@ -8,7 +8,9 @@ GestionTraitement::GestionTraitement(Controleur* controleur){
 }
 
 void GestionTraitement::ajouterTraitementListe(Traitement* t){ 
-	traitements.push_back(t); 
+	traitements.push_back(t);
+	//std::string noms[2]={"aa", "bb"};
+	controleur->getInterface()->ajouterTraitementListe(t->getNom()); 
 }
 
 std::list<Traitement*> GestionTraitement::recupererTraitement(){

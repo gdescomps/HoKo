@@ -12,6 +12,7 @@
 #include <opencv2/highgui.hpp>
 #include <stdio.h>
 #include <cmath>
+#include <string>
 
 namespace Ui {
 
@@ -66,6 +67,8 @@ public:
     // GestionImage *gestionImage; 
 
     // GestionTraitement gestionTraitement;
+
+    void ajouterTraitementListe(std::string nom);
 
     Controleur* controleur;
    

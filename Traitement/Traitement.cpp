@@ -12,3 +12,7 @@ Traitement::Traitement(GestionTraitement* gestionTraitement, cv::Mat imageEntree
 cv::Mat Traitement::getImageEntree(){
 	return this->imageEntree;
 }
+
+std::string Traitement::getNom(){
+	return this->nom;
+}

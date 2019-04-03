@@ -178,6 +178,11 @@ void InterfacePrincipale::majImage4(cv::Mat image){
 }
 
 
+void InterfacePrincipale::ajouterTraitementListe(std::string nom){
+	// ui->listeTraitements->clear();
+	ui->listeTraitements->addItem(QString::fromStdString(nom));
+}
+
 cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
 
 	double largeurFinale = ui->image1->width();

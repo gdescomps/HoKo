@@ -16,7 +16,7 @@
 			Traitement(GestionTraitement* gestionTraitement, cv::Mat imageEntree);
 			virtual ~Traitement() {};
 			cv::Mat getImageEntree();
-
+			std::string getNom();
 
 		protected:
 			std::string nom;

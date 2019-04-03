@@ -144,12 +144,6 @@ public:
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         listeTraitements = new QListWidget(centralWidget);
-        new QListWidgetItem(listeTraitements);
-        new QListWidgetItem(listeTraitements);
-        new QListWidgetItem(listeTraitements);
-        new QListWidgetItem(listeTraitements);
-        new QListWidgetItem(listeTraitements);
-        new QListWidgetItem(listeTraitements);
         listeTraitements->setObjectName(QString::fromUtf8("listeTraitements"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
@@ -267,23 +261,6 @@ public:
         image3->setText(QString());
         image1->setText(QString());
         image4->setText(QString());
-
-        const bool __sortingEnabled = listeTraitements->isSortingEnabled();
-        listeTraitements->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listeTraitements->item(0);
-        ___qlistwidgetitem->setText(QApplication::translate("InterfacePrincipale", "Traitement 1", nullptr));
-        QListWidgetItem *___qlistwidgetitem1 = listeTraitements->item(1);
-        ___qlistwidgetitem1->setText(QApplication::translate("InterfacePrincipale", "Traitement 2", nullptr));
-        QListWidgetItem *___qlistwidgetitem2 = listeTraitements->item(2);
-        ___qlistwidgetitem2->setText(QApplication::translate("InterfacePrincipale", "Traitement 3", nullptr));
-        QListWidgetItem *___qlistwidgetitem3 = listeTraitements->item(3);
-        ___qlistwidgetitem3->setText(QApplication::translate("InterfacePrincipale", "Traitement 4", nullptr));
-        QListWidgetItem *___qlistwidgetitem4 = listeTraitements->item(4);
-        ___qlistwidgetitem4->setText(QApplication::translate("InterfacePrincipale", "Traitement 5", nullptr));
-        QListWidgetItem *___qlistwidgetitem5 = listeTraitements->item(5);
-        ___qlistwidgetitem5->setText(QApplication::translate("InterfacePrincipale", "Traitement 6", nullptr));
-        listeTraitements->setSortingEnabled(__sortingEnabled);
-
         checkBox->setText(QApplication::translate("InterfacePrincipale", "Actif", nullptr));
         pushButton_2->setText(QApplication::translate("InterfacePrincipale", "^", nullptr));
         pushButton_3->setText(QApplication::translate("InterfacePrincipale", "v", nullptr));
