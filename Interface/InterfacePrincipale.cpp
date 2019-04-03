@@ -194,3 +194,8 @@ cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
 	cv::resize(image, image, cv::Size(), echelle, echelle);
 	return image;
 }
+
+void InterfacePrincipale::on_listeTraitements_currentRowChanged(int currentRow){
+	majImage2(controleur->getGestionTraitement()->getTraitement(currentRow)->getImageEntree());
+	majImage3(controleur->getGestionTraitement()->getTraitement(currentRow)->getImageTraitee());
+}

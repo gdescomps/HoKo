@@ -18,8 +18,16 @@ std::list<Traitement*> GestionTraitement::recupererTraitement(){
 }
 
 void GestionTraitement::ajouterTraitement(int num){
+	cv::Mat image;
+	if(traitements.empty()){
+		image = controleur->getGestionImage()->getImageOriginale();
+	}
+	else{
+		image = traitements.back()->getImageTraitee();
+	}
+
 	if(num==0){
-		Traitement* nouveauTraitement = new FlouGaussien(this, controleur->getGestionImage()->getImageOriginale());
+		Traitement* nouveauTraitement = new FlouGaussien(this, image);
 		ajouterTraitementListe(nouveauTraitement);
 	}
 }
@@ -30,4 +38,12 @@ Controleur* GestionTraitement::getControleur(){
 
 void GestionTraitement::imageTraitee(cv::Mat image){
 	this->controleur->majImageTraitee(image);
+}
+
+Traitement* GestionTraitement::getTraitement(int position){
+	std::list<Traitement*>::iterator it=traitements.begin();
+	for(int i=0; i<position; i++){
+		++it;
+	}
+	return *it;
 }

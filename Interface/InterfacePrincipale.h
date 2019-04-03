@@ -111,6 +111,8 @@ private slots:
     */
     void resizeEvent(QResizeEvent*);
 
+    void on_listeTraitements_currentRowChanged(int currentRow);
+
     
 private:
     Ui::InterfacePrincipale *ui;

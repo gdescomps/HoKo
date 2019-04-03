@@ -13,6 +13,10 @@ cv::Mat Traitement::getImageEntree(){
 	return this->imageEntree;
 }
 
+cv::Mat Traitement::getImageTraitee(){
+	return this->imageTraitee;
+}
+
 std::string Traitement::getNom(){
 	return this->nom;
 }

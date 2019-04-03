@@ -21,6 +21,7 @@
 
 			void ajouterTraitementListe(Traitement* t);
 			std::list<Traitement*> recupererTraitement();
+			Traitement* getTraitement(int position);
 
 			void ajouterTraitement(int num);
 			void appliquerTraitement(int num);
