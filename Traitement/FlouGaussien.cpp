@@ -1,5 +1,12 @@
 #include "FlouGaussien.h"
 
+FlouGaussien::FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree) : 
+	Traitement(gestionTraitement, imageEntree)
+{
+	this->nom="FlouGaussien";
+}
+
+
 cv::Mat FlouGaussien::appliquer(int largeurNoyau, int hauteurNoyau, double sigma)
 {
 	this->largeurNoyau=largeurNoyau;

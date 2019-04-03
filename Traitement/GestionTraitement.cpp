@@ -10,6 +10,7 @@ GestionTraitement::GestionTraitement(Controleur* controleur){
 void GestionTraitement::ajouterTraitementListe(Traitement* t){ 
 	traitements.push_back(t); 
 }
+
 std::list<Traitement*> GestionTraitement::recupererTraitement(){
 	return traitements;
 }

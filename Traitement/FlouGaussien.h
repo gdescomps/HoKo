@@ -14,7 +14,7 @@ class FlouGaussien : public Traitement{
 
 
 	public:
-		FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree) : Traitement(gestionTraitement, imageEntree) {}
+		FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree);
 		~FlouGaussien() {}
 
 		// void setLargeurNoyau(int largeurNoyau){

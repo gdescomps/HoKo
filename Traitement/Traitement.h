@@ -3,6 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
+#include <string>
 
 #include "Interface/Fenetres/FenetreModifier.h"
 #include "Traitement/GestionTraitement.h"
@@ -18,6 +19,7 @@
 
 
 		protected:
+			std::string nom;
 			cv::Mat imageEntree;
 			cv::Mat imageTraitee;
 
