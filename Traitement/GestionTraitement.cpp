@@ -47,3 +47,22 @@ Traitement* GestionTraitement::getTraitement(int position){
 	}
 	return *it;
 }
+
+void GestionTraitement::supprimerTraitement(int position){
+	std::list<Traitement*>::iterator it=traitements.begin();
+	for(int i=0; i<position; i++){
+		++it;
+	}
+	traitements.erase(it);
+	majTraitements();
+}
+
+void GestionTraitement::majTraitements(){
+	std::list<Traitement*>::iterator it;
+
+	cv::Mat image = controleur->getGestionImage()->getImageOriginale();
+
+	for(it=traitements.begin(); it!=traitements.end(); ++it){
+		image = reinterpret_cast<FlouGaussien*>(*it)->maj(image);
+	}
+}

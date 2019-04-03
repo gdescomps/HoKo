@@ -106,6 +106,8 @@ private slots:
     */
 	void on_ajouterBouton_clicked();
 
+    void on_supprimerBouton_clicked();
+
     /**
     * Met à jour l'affichage des images. Déclenchée lors d'un redimensionnement de la fenêtre principale.
     */

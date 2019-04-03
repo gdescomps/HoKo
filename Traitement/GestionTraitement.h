@@ -24,11 +24,15 @@
 			Traitement* getTraitement(int position);
 
 			void ajouterTraitement(int num);
+			void supprimerTraitement(int position);
+
 			void appliquerTraitement(int num);
 
 			Controleur* getControleur();
 
 			void imageTraitee(cv::Mat image);
+
+			void majTraitements();
 
 	};
 

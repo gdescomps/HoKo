@@ -3,7 +3,8 @@
 FlouGaussien::FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree) : 
 	Traitement(gestionTraitement, imageEntree)
 {
-	this->nom="FlouGaussien";
+	this->nom="Flou Gaussien";
+	this->id=0;
 }
 
 
@@ -15,4 +16,10 @@ cv::Mat FlouGaussien::appliquer(int largeurNoyau, int hauteurNoyau, double sigma
     cv::GaussianBlur(this->imageEntree, this->imageTraitee, cv::Size(largeurNoyau,hauteurNoyau), sigma);
     gestionTraitement->imageTraitee(this->imageTraitee);
     return this->imageTraitee;
+}
+
+cv::Mat FlouGaussien::maj(cv::Mat imageEntree){
+	this->imageEntree=imageEntree;
+	cv::GaussianBlur(this->imageEntree, this->imageTraitee, cv::Size(this->largeurNoyau,this->hauteurNoyau), this->sigma);
+	return this->imageTraitee;
 }

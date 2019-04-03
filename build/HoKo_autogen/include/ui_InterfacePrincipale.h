@@ -53,8 +53,8 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton;
+    QPushButton *modifierBouton;
+    QPushButton *supprimerBouton;
     QHBoxLayout *horizontalLayout_3;
     QComboBox *choixTraitement;
     QPushButton *ajouterBouton;
@@ -177,15 +177,15 @@ public:
 
         horizontalLayout_2->addWidget(pushButton_3);
 
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        modifierBouton = new QPushButton(centralWidget);
+        modifierBouton->setObjectName(QString::fromUtf8("modifierBouton"));
 
-        horizontalLayout_2->addWidget(pushButton_4);
+        horizontalLayout_2->addWidget(modifierBouton);
 
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        supprimerBouton = new QPushButton(centralWidget);
+        supprimerBouton->setObjectName(QString::fromUtf8("supprimerBouton"));
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(supprimerBouton);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
@@ -264,8 +264,8 @@ public:
         checkBox->setText(QApplication::translate("InterfacePrincipale", "Actif", nullptr));
         pushButton_2->setText(QApplication::translate("InterfacePrincipale", "^", nullptr));
         pushButton_3->setText(QApplication::translate("InterfacePrincipale", "v", nullptr));
-        pushButton_4->setText(QApplication::translate("InterfacePrincipale", "Modifier", nullptr));
-        pushButton->setText(QApplication::translate("InterfacePrincipale", "Supprimer", nullptr));
+        modifierBouton->setText(QApplication::translate("InterfacePrincipale", "Modifier", nullptr));
+        supprimerBouton->setText(QApplication::translate("InterfacePrincipale", "Supprimer", nullptr));
         choixTraitement->setItemText(0, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         choixTraitement->setItemText(1, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         choixTraitement->setItemText(2, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));

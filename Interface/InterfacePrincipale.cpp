@@ -199,3 +199,9 @@ void InterfacePrincipale::on_listeTraitements_currentRowChanged(int currentRow){
 	majImage2(controleur->getGestionTraitement()->getTraitement(currentRow)->getImageEntree());
 	majImage3(controleur->getGestionTraitement()->getTraitement(currentRow)->getImageTraitee());
 }
+
+void InterfacePrincipale::on_supprimerBouton_clicked(){
+	int position = ui->listeTraitements->currentRow();
+	ui->listeTraitements->takeItem(position);
+	controleur->getGestionTraitement()->supprimerTraitement(position);
+}

@@ -18,7 +18,7 @@ class FlouGaussien : public Traitement{
 		~FlouGaussien() {}
 
 		cv::Mat appliquer(int largeurNoyau, int hauteurNoyau, double sigma);
-		
+		cv::Mat maj(cv::Mat imageEntree);
 
 };
 

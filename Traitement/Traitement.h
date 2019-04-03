@@ -21,6 +21,8 @@
 
 		protected:
 			std::string nom;
+			int id;
+			
 			cv::Mat imageEntree;
 			cv::Mat imageTraitee;
 
