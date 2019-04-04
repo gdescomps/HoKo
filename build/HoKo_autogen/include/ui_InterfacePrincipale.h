@@ -51,8 +51,8 @@ public:
     QListWidget *listeTraitements;
     QCheckBox *checkBox;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *hautBouton;
+    QPushButton *basBouton;
     QPushButton *modifierBouton;
     QPushButton *supprimerBouton;
     QHBoxLayout *horizontalLayout_3;
@@ -162,20 +162,20 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        hautBouton = new QPushButton(centralWidget);
+        hautBouton->setObjectName(QString::fromUtf8("hautBouton"));
 
-        horizontalLayout_2->addWidget(pushButton_2);
+        horizontalLayout_2->addWidget(hautBouton);
 
-        pushButton_3 = new QPushButton(centralWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        basBouton = new QPushButton(centralWidget);
+        basBouton->setObjectName(QString::fromUtf8("basBouton"));
         QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(basBouton->sizePolicy().hasHeightForWidth());
+        basBouton->setSizePolicy(sizePolicy2);
 
-        horizontalLayout_2->addWidget(pushButton_3);
+        horizontalLayout_2->addWidget(basBouton);
 
         modifierBouton = new QPushButton(centralWidget);
         modifierBouton->setObjectName(QString::fromUtf8("modifierBouton"));
@@ -252,27 +252,63 @@ public:
     {
         InterfacePrincipale->setWindowTitle(QApplication::translate("InterfacePrincipale", "HoKo", nullptr));
         actionCharger_une_configuration->setText(QApplication::translate("InterfacePrincipale", "Charger une configuration", nullptr));
+#ifndef QT_NO_SHORTCUT
+        actionCharger_une_configuration->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+O", nullptr));
+#endif // QT_NO_SHORTCUT
         actionExporter_la_configuration->setText(QApplication::translate("InterfacePrincipale", "Exporter la configuration", nullptr));
+#ifndef QT_NO_SHORTCUT
+        actionExporter_la_configuration->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+S", nullptr));
+#endif // QT_NO_SHORTCUT
         actionImporter_une_image->setText(QApplication::translate("InterfacePrincipale", "Importer une image", nullptr));
+#ifndef QT_NO_SHORTCUT
+        actionImporter_une_image->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+I", nullptr));
+#endif // QT_NO_SHORTCUT
         actionSauvegarder_l_image_finale->setText(QApplication::translate("InterfacePrincipale", "Sauvegarder l'image finale", nullptr));
+#ifndef QT_NO_SHORTCUT
+        actionSauvegarder_l_image_finale->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+Alt+S", nullptr));
+#endif // QT_NO_SHORTCUT
         actionAide->setText(QApplication::translate("InterfacePrincipale", "Guide d'utilisation", nullptr));
+#ifndef QT_NO_SHORTCUT
+        actionAide->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+G", nullptr));
+#endif // QT_NO_SHORTCUT
         actionVersion->setText(QApplication::translate("InterfacePrincipale", "\303\200 propos de HoKo", nullptr));
+#ifndef QT_NO_SHORTCUT
+        actionVersion->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+H", nullptr));
+#endif // QT_NO_SHORTCUT
         image2->setText(QString());
         image3->setText(QString());
         image1->setText(QString());
         image4->setText(QString());
         checkBox->setText(QApplication::translate("InterfacePrincipale", "Actif", nullptr));
-        pushButton_2->setText(QApplication::translate("InterfacePrincipale", "^", nullptr));
-        pushButton_3->setText(QApplication::translate("InterfacePrincipale", "v", nullptr));
+#ifndef QT_NO_SHORTCUT
+        checkBox->setShortcut(QApplication::translate("InterfacePrincipale", "Shift+A", nullptr));
+#endif // QT_NO_SHORTCUT
+        hautBouton->setText(QApplication::translate("InterfacePrincipale", "\311\205", nullptr));
+#ifndef QT_NO_SHORTCUT
+        hautBouton->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+Up", nullptr));
+#endif // QT_NO_SHORTCUT
+        basBouton->setText(QApplication::translate("InterfacePrincipale", "V", nullptr));
+#ifndef QT_NO_SHORTCUT
+        basBouton->setShortcut(QApplication::translate("InterfacePrincipale", "Ctrl+Down", nullptr));
+#endif // QT_NO_SHORTCUT
         modifierBouton->setText(QApplication::translate("InterfacePrincipale", "Modifier", nullptr));
+#ifndef QT_NO_SHORTCUT
+        modifierBouton->setShortcut(QApplication::translate("InterfacePrincipale", "M", nullptr));
+#endif // QT_NO_SHORTCUT
         supprimerBouton->setText(QApplication::translate("InterfacePrincipale", "Supprimer", nullptr));
-        choixTraitement->setItemText(0, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+#ifndef QT_NO_SHORTCUT
+        supprimerBouton->setShortcut(QApplication::translate("InterfacePrincipale", "Del", nullptr));
+#endif // QT_NO_SHORTCUT
+        choixTraitement->setItemText(0, QApplication::translate("InterfacePrincipale", "Flou Gaussien", nullptr));
         choixTraitement->setItemText(1, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         choixTraitement->setItemText(2, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         choixTraitement->setItemText(3, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         choixTraitement->setItemText(4, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
 
         ajouterBouton->setText(QApplication::translate("InterfacePrincipale", "Ajouter", nullptr));
+#ifndef QT_NO_SHORTCUT
+        ajouterBouton->setShortcut(QApplication::translate("InterfacePrincipale", "A", nullptr));
+#endif // QT_NO_SHORTCUT
         menuHoKo->setTitle(QApplication::translate("InterfacePrincipale", "Image", nullptr));
         menuCOnfiguration->setTitle(QApplication::translate("InterfacePrincipale", "Configuration", nullptr));
         menuAide->setTitle(QApplication::translate("InterfacePrincipale", "Aide", nullptr));

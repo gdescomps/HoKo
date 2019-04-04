@@ -144,19 +144,25 @@
         <property name="text">
          <string>Actif</string>
         </property>
+        <property name="shortcut">
+          <string>Shift+A</string>
+        </property>
        </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="hautBouton">
           <property name="text">
-           <string>^</string>
+           <string>Ʌ</string>
+          </property>
+          <property name="shortcut">
+            <string>Ctrl+Up</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="basBouton">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
             <horstretch>0</horstretch>
@@ -164,7 +170,10 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>v</string>
+           <string>V</string>
+          </property>
+          <property name="shortcut">
+            <string>Ctrl+Down</string>
           </property>
          </widget>
         </item>
@@ -173,12 +182,18 @@
           <property name="text">
            <string>Modifier</string>
           </property>
+          <property name="shortcut">
+            <string>M</string>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="supprimerBouton">
           <property name="text">
            <string>Supprimer</string>
+          </property>
+          <property name="shortcut">
+            <string>Del</string>
           </property>
          </widget>
         </item>
@@ -190,7 +205,7 @@
          <widget class="QComboBox" name="choixTraitement">
           <item>
            <property name="text">
-            <string>Traitement</string>
+            <string>Flou Gaussien</string>
            </property>
           </item>
           <item>
@@ -219,6 +234,9 @@
          <widget class="QPushButton" name="ajouterBouton">
           <property name="text">
            <string>Ajouter</string>
+          </property>
+          <property name="shortcut">
+            <string>A</string>
           </property>
          </widget>
         </item>
@@ -267,30 +285,48 @@
    <property name="text">
     <string>Charger une configuration</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionExporter_la_configuration">
    <property name="text">
     <string>Exporter la configuration</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionImporter_une_image">
    <property name="text">
     <string>Importer une image</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
   </action>
   <action name="actionSauvegarder_l_image_finale">
    <property name="text">
     <string>Sauvegarder l'image finale</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+S</string>
    </property>
   </action>
   <action name="actionAide">
    <property name="text">
     <string>Guide d'utilisation</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
   </action>
   <action name="actionVersion">
    <property name="text">
     <string>À propos de HoKo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
    </property>
   </action>
  </widget>
