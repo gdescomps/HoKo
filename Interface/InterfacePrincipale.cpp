@@ -183,6 +183,10 @@ void InterfacePrincipale::ajouterTraitementListe(std::string nom){
 	ui->listeTraitements->setCurrentRow(ui->listeTraitements->count()-1);
 }
 
+void InterfacePrincipale::annulerAjoutTraitementListe(){
+	ui->listeTraitements->takeItem(ui->listeTraitements->count()-1);
+}
+
 cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
 
 	double largeurFinale = ui->image1->width();

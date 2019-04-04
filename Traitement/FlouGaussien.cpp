@@ -26,6 +26,6 @@ cv::Mat FlouGaussien::maj(cv::Mat imageEntree){
 }
 
 void FlouGaussien::modifier(){
-	fenetre = new FenetreModifier(this, largeurNoyau, hauteurNoyau, sigma);
+	fenetre = new FenetreModifier(this, largeurNoyau, hauteurNoyau, sigma, true);
 	fenetre->show();
 }

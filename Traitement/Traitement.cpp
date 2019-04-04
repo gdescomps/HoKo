@@ -31,6 +31,10 @@ void Traitement::modifier(){
 	fenetre->show();
 }
 
+void Traitement::annulerAjout(){
+	gestionTraitement->annulerAjout();
+}
+
 void Traitement::validerModification(){
 	gestionTraitement->majTraitements();
 }

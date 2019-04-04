@@ -26,7 +26,7 @@ public:
     * \param interface L'interface principale de l'application
     * \param parent QWidget*
     */
-    FenetreModifier(Traitement* traitement, int largeurNoyau=1, int hauteurNoyau=1, double sigma=0, QWidget *parent = nullptr);
+    FenetreModifier(Traitement* traitement, int largeurNoyau=1, int hauteurNoyau=1, double sigma=0, bool modification=false, QWidget *parent = nullptr);
 
     ~FenetreModifier();
 
@@ -71,6 +71,7 @@ private:
     int largeurNoyau;
     int hauteurNoyau;
     double sigma;
+    bool modification;
     
     /**
     * Applique un flou gaussien (fonction OpenCV GaussianBlur)

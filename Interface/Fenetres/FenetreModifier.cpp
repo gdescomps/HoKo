@@ -4,16 +4,19 @@
 #include "Traitement/FlouGaussien.h"
 
 
-FenetreModifier::FenetreModifier(Traitement* traitement, int largeurNoyau, int hauteurNoyau, double sigma, QWidget *parent) :
+FenetreModifier::FenetreModifier(Traitement* traitement, int largeurNoyau, int hauteurNoyau, double sigma, bool modification, QWidget *parent) :
 	QDialog(parent),
     ui(new Ui::FenetreModifier)
 {
     ui->setupUi(this);
 
     this->traitement=traitement;
+
     ui->spinBoxLargeurNoyau->setValue(largeurNoyau);
     ui->spinBoxHauteurNoyau->setValue(hauteurNoyau);
     ui->doubleSpinBoxSigma->setValue(sigma);
+
+    this->modification=modification;
 }
 
 FenetreModifier::~FenetreModifier()
@@ -29,6 +32,8 @@ void FenetreModifier::on_validerBouton_clicked()
 
 void FenetreModifier::on_annulerBouton_clicked()
 {
+    if(!modification)
+        traitement->annulerAjout();
     this->~FenetreModifier();
 }
 

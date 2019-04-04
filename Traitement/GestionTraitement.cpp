@@ -1,5 +1,6 @@
 #include "Traitement/GestionTraitement.h"
 #include "Interface/Fenetres/FenetreModifier.h"
+#include "Interface/InterfacePrincipale.h"
 
 #include "Traitement/FlouGaussien.h"
 
@@ -59,6 +60,12 @@ void GestionTraitement::supprimerTraitement(int position){
 	delete *it;
 	traitements.erase(it);
 	majTraitements();
+}
+
+void GestionTraitement::annulerAjout(){
+	traitements.pop_back();
+	majTraitements();
+	controleur->getInterface()->annulerAjoutTraitementListe();
 }
 
 void GestionTraitement::majTraitements(){

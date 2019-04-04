@@ -28,6 +28,8 @@
 			void modifierTraitement(int position);
 			void supprimerTraitement(int position);
 
+			void annulerAjout();
+
 			void appliquerTraitement(int num);
 
 			Controleur* getControleur();

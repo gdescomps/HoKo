@@ -19,6 +19,7 @@
 			cv::Mat getImageTraitee();
 			std::string getNom();
 			void modifier();
+			void annulerAjout();
 			void validerModification();
 
 		protected:
