@@ -208,6 +208,12 @@ void InterfacePrincipale::on_supprimerBouton_clicked(){
 	int position = ui->listeTraitements->currentRow();
 	ui->listeTraitements->takeItem(position);
 	controleur->getGestionTraitement()->supprimerTraitement(position);
+	
 	if(ui->listeTraitements->count()>0)
 		afficherTraitement(ui->listeTraitements->currentRow());
+}
+
+void InterfacePrincipale::on_modifierBouton_clicked(){
+	int position = ui->listeTraitements->currentRow();
+	controleur->getGestionTraitement()->modifierTraitement(position);
 }

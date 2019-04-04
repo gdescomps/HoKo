@@ -18,6 +18,8 @@
 			cv::Mat getImageEntree();
 			cv::Mat getImageTraitee();
 			std::string getNom();
+			void modifier();
+			void validerModification();
 
 		protected:
 			std::string nom;

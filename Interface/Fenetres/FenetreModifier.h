@@ -20,14 +20,13 @@ class FenetreModifier : public QDialog
     Q_OBJECT
 
 public:
-    explicit FenetreModifier(QWidget *parent = nullptr);
-
+    
     /**
     * Constructeur de FenetreModifier
     * \param interface L'interface principale de l'application
     * \param parent QWidget*
     */
-    FenetreModifier(Traitement* traitement, QWidget *parent = nullptr);
+    FenetreModifier(Traitement* traitement, int largeurNoyau=1, int hauteurNoyau=1, double sigma=0, QWidget *parent = nullptr);
 
     ~FenetreModifier();
 

@@ -24,6 +24,8 @@
 			Traitement* getTraitement(int position);
 
 			void ajouterTraitement(int num);
+
+			void modifierTraitement(int position);
 			void supprimerTraitement(int position);
 
 			void appliquerTraitement(int num);

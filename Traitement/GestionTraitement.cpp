@@ -47,6 +47,10 @@ Traitement* GestionTraitement::getTraitement(int position){
 	return *it;
 }
 
+void GestionTraitement::modifierTraitement(int position){
+	reinterpret_cast<FlouGaussien*>(getTraitement(position))->modifier();
+}
+
 void GestionTraitement::supprimerTraitement(int position){
 	std::list<Traitement*>::iterator it=traitements.begin();
 	for(int i=0; i<position; i++){

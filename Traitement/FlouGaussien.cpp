@@ -24,3 +24,8 @@ cv::Mat FlouGaussien::maj(cv::Mat imageEntree){
 	cv::GaussianBlur(this->imageEntree, this->imageTraitee, cv::Size(this->largeurNoyau,this->hauteurNoyau), this->sigma);
 	return this->imageTraitee;
 }
+
+void FlouGaussien::modifier(){
+	fenetre = new FenetreModifier(this, largeurNoyau, hauteurNoyau, sigma);
+	fenetre->show();
+}

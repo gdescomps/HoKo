@@ -3,25 +3,19 @@
 #include "Interface/InterfacePrincipale.h"
 #include "Traitement/FlouGaussien.h"
 
-FenetreModifier::FenetreModifier(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::FenetreModifier)
-{
-    ui->setupUi(this);
-}
 
-FenetreModifier::FenetreModifier(Traitement* traitement, QWidget *parent) :
+FenetreModifier::FenetreModifier(Traitement* traitement, int largeurNoyau, int hauteurNoyau, double sigma, QWidget *parent) :
 	QDialog(parent),
     ui(new Ui::FenetreModifier)
 {
     ui->setupUi(this);
 
     this->traitement=traitement;
-
-    // this->interface=interface;
-    // interface->majImage3(flouGaussien(ui->spinBoxLargeurNoyau->value(),ui->spinBoxHauteurNoyau->value(),ui->doubleSpinBoxSigma->value()));
-
+    ui->spinBoxLargeurNoyau->setValue(largeurNoyau);
+    ui->spinBoxHauteurNoyau->setValue(hauteurNoyau);
+    ui->doubleSpinBoxSigma->setValue(sigma);
 }
+
 FenetreModifier::~FenetreModifier()
 {
     delete ui;
@@ -29,6 +23,7 @@ FenetreModifier::~FenetreModifier()
 
 void FenetreModifier::on_validerBouton_clicked()
 {
+    traitement->validerModification();
     this->~FenetreModifier();
 }
 

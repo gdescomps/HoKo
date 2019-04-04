@@ -20,3 +20,12 @@ cv::Mat Traitement::getImageTraitee(){
 std::string Traitement::getNom(){
 	return this->nom;
 }
+
+void Traitement::modifier(){
+	fenetre = new FenetreModifier(this);
+	fenetre->show();
+}
+
+void Traitement::validerModification(){
+	gestionTraitement->majTraitements();
+}

@@ -21,5 +21,4 @@ GestionTraitement* Controleur::getGestionTraitement(){
 
 void Controleur::majImageTraitee(cv::Mat image){
 	this->getInterface()->majImage3(image);
-	this->getInterface()->majImage4(image);
 }
