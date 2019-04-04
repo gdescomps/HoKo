@@ -70,7 +70,7 @@ public:
 
     void ajouterTraitementListe(std::string nom);
 
-    Controleur* controleur;
+    
    
 private slots:
     /**
@@ -118,6 +118,8 @@ private slots:
     
 private:
     Ui::InterfacePrincipale *ui;
+
+    Controleur* controleur;
 
     /**
     * Redimensionne une image en fonction de la taille des labels de l'interface principale.

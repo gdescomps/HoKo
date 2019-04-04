@@ -13,9 +13,9 @@
 		private:
 			std::list<Traitement*> traitements;
 			
+			Controleur* controleur;
 
 		public:
-			Controleur* controleur;
 
 			GestionTraitement(Controleur* controleur);
 
