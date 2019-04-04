@@ -9,7 +9,6 @@ GestionTraitement::GestionTraitement(Controleur* controleur){
 
 void GestionTraitement::ajouterTraitementListe(Traitement* t){ 
 	traitements.push_back(t);
-	//std::string noms[2]={"aa", "bb"};
 	controleur->getInterface()->ajouterTraitementListe(t->getNom()); 
 }
 
@@ -62,7 +61,17 @@ void GestionTraitement::majTraitements(){
 
 	cv::Mat image = controleur->getGestionImage()->getImageOriginale();
 
-	for(it=traitements.begin(); it!=traitements.end(); ++it){
-		image = reinterpret_cast<FlouGaussien*>(*it)->maj(image);
+	if(!traitements.empty()){
+		for(it=traitements.begin(); it!=traitements.end(); ++it){
+			controleur->getInterface()->majImage2(image);
+			image = reinterpret_cast<FlouGaussien*>(*it)->maj(image);
+			controleur->getInterface()->majImage3(image);
+		}
 	}
+	else {
+		controleur->getInterface()->majImage2(image);
+		controleur->getInterface()->majImage3(image);
+	}
+
+	controleur->getInterface()->majImage4(image);
 }
