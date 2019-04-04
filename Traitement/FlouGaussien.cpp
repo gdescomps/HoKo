@@ -5,6 +5,7 @@ FlouGaussien::FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEn
 {
 	this->nom="Flou Gaussien";
 	this->id=0;
+	appliquer(1,1,0);
 }
 
 

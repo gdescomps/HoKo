@@ -179,8 +179,8 @@ void InterfacePrincipale::majImage4(cv::Mat image){
 
 
 void InterfacePrincipale::ajouterTraitementListe(std::string nom){
-	// ui->listeTraitements->clear();
 	ui->listeTraitements->addItem(QString::fromStdString(nom));
+	ui->listeTraitements->setCurrentRow(ui->listeTraitements->count()-1);
 }
 
 cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
@@ -195,13 +195,19 @@ cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
 	return image;
 }
 
+void InterfacePrincipale::afficherTraitement(int position){
+	majImage2(controleur->getGestionTraitement()->getTraitement(position)->getImageEntree());
+	majImage3(controleur->getGestionTraitement()->getTraitement(position)->getImageTraitee());
+}
+
 void InterfacePrincipale::on_listeTraitements_currentRowChanged(int currentRow){
-	majImage2(controleur->getGestionTraitement()->getTraitement(currentRow)->getImageEntree());
-	majImage3(controleur->getGestionTraitement()->getTraitement(currentRow)->getImageTraitee());
+	afficherTraitement(currentRow);
 }
 
 void InterfacePrincipale::on_supprimerBouton_clicked(){
 	int position = ui->listeTraitements->currentRow();
 	ui->listeTraitements->takeItem(position);
 	controleur->getGestionTraitement()->supprimerTraitement(position);
+	if(ui->listeTraitements->count()>0)
+		afficherTraitement(ui->listeTraitements->currentRow());
 }

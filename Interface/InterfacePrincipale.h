@@ -70,7 +70,7 @@ public:
 
     void ajouterTraitementListe(std::string nom);
 
-    
+    void afficherTraitement(int position);
    
 private slots:
     /**

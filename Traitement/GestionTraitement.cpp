@@ -54,6 +54,7 @@ void GestionTraitement::supprimerTraitement(int position){
 	}
 	traitements.erase(it);
 	majTraitements();
+
 }
 
 void GestionTraitement::majTraitements(){
@@ -63,9 +64,7 @@ void GestionTraitement::majTraitements(){
 
 	if(!traitements.empty()){
 		for(it=traitements.begin(); it!=traitements.end(); ++it){
-			controleur->getInterface()->majImage2(image);
 			image = reinterpret_cast<FlouGaussien*>(*it)->maj(image);
-			controleur->getInterface()->majImage3(image);
 		}
 	}
 	else {
