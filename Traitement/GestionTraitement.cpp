@@ -56,9 +56,9 @@ void GestionTraitement::supprimerTraitement(int position){
 	for(int i=0; i<position; i++){
 		++it;
 	}
+	delete *it;
 	traitements.erase(it);
 	majTraitements();
-
 }
 
 void GestionTraitement::majTraitements(){

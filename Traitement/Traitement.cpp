@@ -9,6 +9,11 @@ Traitement::Traitement(GestionTraitement* gestionTraitement, cv::Mat imageEntree
 	fenetre->show();
 }
 
+Traitement::~Traitement(){
+	~imageEntree;
+	~imageTraitee;
+}
+
 cv::Mat Traitement::getImageEntree(){
 	return this->imageEntree;
 }
