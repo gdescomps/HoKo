@@ -2,7 +2,7 @@
 #define FENETREMODIFIER_H
 
 #include <QDialog>
-#include "Interface/InterfacePrincipale.h"
+// #include "Interface/InterfacePrincipale.h"
 #include "Traitement/Traitement.h"
 
 namespace Ui {
@@ -26,7 +26,7 @@ public:
     * \param interface L'interface principale de l'application
     * \param parent QWidget*
     */
-    FenetreModifier(Traitement* traitement, int largeurNoyau=1, int hauteurNoyau=1, double sigma=0, bool modification=false, QWidget *parent = nullptr);
+    FenetreModifier(Traitement* traitement, bool modification=false, QWidget *parent = nullptr);
 
     ~FenetreModifier();
 
@@ -68,24 +68,23 @@ private:
 
     Traitement* traitement;
 
+    list<Parametre> parametres;
+    list<Valeur> sauvegardeValeurs;
+
+    /*
     int largeurNoyau;
     int hauteurNoyau;
-    double sigma;
+    double sigma;*/
 
     int sauvLargeurNoyau;
     int sauvHauteurNoyau;
     double sauvSigma;
 
     bool modification;
+
+    void envoyerValeurs();
+    void majValeursChamps(list<Valeur> valeurs);
     
-    /**
-    * Applique un flou gaussien (fonction OpenCV GaussianBlur)
-    * \param largeurNoyau Hauteur du noyau du flou gaussien
-    * \param hauteurNoyau Largeur du noyau du flou gaussien
-    * \param sigma Sigma du flou gaussien
-    * \return Image traitée au format OpenCV Mat
-    */
-    void flouGaussien(int largeurNoyau, int hauteurNoyau, double sigma);
 };
 
 #endif // FENETREMODIFIER_H

@@ -5,27 +5,43 @@ FlouGaussien::FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEn
 {
 	this->nom="Flou Gaussien";
 	this->id=0;
-	appliquer(1,1,0);
+
+	this->parametres.push_back(Parametre {_INT, "hauteurNoyau", 1});
+	this->parametres.push_back(Parametre {_INT, "largeurNoyau", 1});
+	this->parametres.push_back(Parametre {_DOUBLE, "sigma", 0});
+
+	appliquer(toValeurList(this->parametres));
+
+	fenetre = new FenetreModifier(this);
+	fenetre->show();
 }
 
 
-cv::Mat FlouGaussien::appliquer(int largeurNoyau, int hauteurNoyau, double sigma)
-{
-	this->largeurNoyau=largeurNoyau;
-	this->hauteurNoyau=hauteurNoyau;
-	this->sigma=sigma;
-    cv::GaussianBlur(this->imageEntree, this->imageTraitee, cv::Size(largeurNoyau,hauteurNoyau), sigma);
-    gestionTraitement->imageTraitee(this->imageTraitee);
-    return this->imageTraitee;
+void FlouGaussien::appliquer(list<Valeur> valeurs){
+	majParametres(valeurs);
+
+	list<Valeur>::iterator it=valeurs.begin();
+	int largeurNoyau = (*it)._int;
+
+	++it; // Passer au paramètre suivant
+	int hauteurNoyau = (*it)._int;
+
+	++it;
+	double sigma = (*it)._double;
+
+	cv::GaussianBlur(this->imageEntree, this->imageTraitee, cv::Size(largeurNoyau,hauteurNoyau), sigma);
+
+	gestionTraitement->imageTraitee(this->imageTraitee);
 }
+
 
 cv::Mat FlouGaussien::maj(cv::Mat imageEntree){
 	this->imageEntree=imageEntree;
-	cv::GaussianBlur(this->imageEntree, this->imageTraitee, cv::Size(this->largeurNoyau,this->hauteurNoyau), this->sigma);
+	appliquer(toValeurList(this->parametres));
 	return this->imageTraitee;
 }
 
 void FlouGaussien::modifier(){
-	fenetre = new FenetreModifier(this, largeurNoyau, hauteurNoyau, sigma, true);
+	fenetre = new FenetreModifier(this, true);
 	fenetre->show();
 }

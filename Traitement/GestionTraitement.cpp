@@ -50,7 +50,7 @@ Traitement* GestionTraitement::getTraitement(int position){
 }
 
 void GestionTraitement::modifierTraitement(int position){
-	reinterpret_cast<FlouGaussien*>(getTraitement(position))->modifier();
+	getTraitement(position)->modifier();
 }
 
 void GestionTraitement::supprimerTraitement(int position){
@@ -91,7 +91,7 @@ void GestionTraitement::majTraitements(){
 
 	if(!traitements.empty()){
 		for(it=traitements.begin(); it!=traitements.end(); ++it){
-			image = reinterpret_cast<FlouGaussien*>(*it)->maj(image);
+			image = (*it)->maj(image);
 		}
 	}
 	else {

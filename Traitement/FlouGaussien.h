@@ -17,10 +17,11 @@ class FlouGaussien : public Traitement{
 		FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree);
 		~FlouGaussien() {}
 
-		cv::Mat appliquer(int largeurNoyau, int hauteurNoyau, double sigma);
-		cv::Mat maj(cv::Mat imageEntree);
+		virtual void appliquer(list<Valeur> valeurs);
 
-		void modifier();
+		virtual cv::Mat maj(cv::Mat imageEntree);
+		virtual void modifier();
+
 
 };
 
