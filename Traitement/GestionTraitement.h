@@ -28,6 +28,8 @@
 			void modifierTraitement(int position);
 			void supprimerTraitement(int position);
 
+			void intervertirTraitements(int pos1, int pos2);
+
 			void annulerAjout();
 
 			void appliquerTraitement(int num);

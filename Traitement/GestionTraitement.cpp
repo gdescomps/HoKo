@@ -10,6 +10,7 @@ GestionTraitement::GestionTraitement(Controleur* controleur){
 
 void GestionTraitement::ajouterTraitementListe(Traitement* t){ 
 	traitements.push_back(t);
+	// controleur->getInterface()->ajouterTraitementListe(t->getNom()+" "+std::to_string(traitements.size())); 
 	controleur->getInterface()->ajouterTraitementListe(t->getNom()); 
 }
 
@@ -59,6 +60,21 @@ void GestionTraitement::supprimerTraitement(int position){
 	}
 	delete *it;
 	traitements.erase(it);
+	majTraitements();
+}
+
+void GestionTraitement::intervertirTraitements(int pos1, int pos2){
+	std::list<Traitement*>::iterator it1=traitements.begin();
+	for(int i=0; i<pos1; i++){
+		++it1;
+	}
+
+	std::list<Traitement*>::iterator it2=traitements.begin();
+	for(int i=0; i<pos2; i++){
+		++it2;
+	}
+
+	std::iter_swap(it1,it2);
 	majTraitements();
 }
 

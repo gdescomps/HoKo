@@ -263,3 +263,25 @@ void InterfacePrincipale::on_modifierBouton_clicked(){
 	int position = ui->listeTraitements->currentRow();
 	controleur->getGestionTraitement()->modifierTraitement(position);
 }
+
+void InterfacePrincipale::on_hautBouton_clicked(){
+	int position = ui->listeTraitements->currentRow();
+	controleur->getGestionTraitement()->intervertirTraitements(position, position-1);
+
+	QString tmp = ui->listeTraitements->currentItem()->text();
+	ui->listeTraitements->currentItem()->setText(ui->listeTraitements->item(position-1)->text());
+	ui->listeTraitements->item(position-1)->setText(tmp);
+
+	ui->listeTraitements->setCurrentRow(position-1);
+}
+
+void InterfacePrincipale::on_basBouton_clicked(){
+	int position = ui->listeTraitements->currentRow();
+	controleur->getGestionTraitement()->intervertirTraitements(position, position+1);
+
+	QString tmp = ui->listeTraitements->currentItem()->text();
+	ui->listeTraitements->currentItem()->setText(ui->listeTraitements->item(position+1)->text());
+	ui->listeTraitements->item(position+1)->setText(tmp);
+
+	ui->listeTraitements->setCurrentRow(position+1);
+}
