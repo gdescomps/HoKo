@@ -64,8 +64,8 @@ void GestionTraitement::supprimerTraitement(int position){
 
 void GestionTraitement::annulerAjout(){
 	traitements.pop_back();
-	majTraitements();
 	controleur->getInterface()->annulerAjoutTraitementListe();
+	majTraitements();
 }
 
 void GestionTraitement::majTraitements(){

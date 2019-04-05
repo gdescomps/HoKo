@@ -71,6 +71,11 @@ private:
     int largeurNoyau;
     int hauteurNoyau;
     double sigma;
+
+    int sauvLargeurNoyau;
+    int sauvHauteurNoyau;
+    double sauvSigma;
+
     bool modification;
     
     /**

@@ -17,6 +17,12 @@ FenetreModifier::FenetreModifier(Traitement* traitement, int largeurNoyau, int h
     ui->doubleSpinBoxSigma->setValue(sigma);
 
     this->modification=modification;
+
+    if(modification){
+        this->sauvLargeurNoyau=largeurNoyau;
+        this->sauvHauteurNoyau=hauteurNoyau;
+        this->sauvSigma=sigma;
+    }
 }
 
 FenetreModifier::~FenetreModifier()
@@ -32,8 +38,12 @@ void FenetreModifier::on_validerBouton_clicked()
 
 void FenetreModifier::on_annulerBouton_clicked()
 {
-    if(!modification)
+    if(!modification){
         traitement->annulerAjout();
+    }
+    else{
+        flouGaussien(sauvLargeurNoyau,sauvHauteurNoyau,sauvSigma);
+    }
     this->~FenetreModifier();
 }
 
