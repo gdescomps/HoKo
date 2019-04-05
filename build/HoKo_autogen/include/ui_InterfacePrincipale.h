@@ -49,7 +49,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QListWidget *listeTraitements;
-    QCheckBox *checkBox;
+    QCheckBox *actifCheckBox;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *hautBouton;
     QPushButton *basBouton;
@@ -154,16 +154,19 @@ public:
 
         verticalLayout->addWidget(listeTraitements);
 
-        checkBox = new QCheckBox(centralWidget);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        actifCheckBox = new QCheckBox(centralWidget);
+        actifCheckBox->setObjectName(QString::fromUtf8("actifCheckBox"));
+        actifCheckBox->setEnabled(false);
+        actifCheckBox->setChecked(true);
 
-        verticalLayout->addWidget(checkBox);
+        verticalLayout->addWidget(actifCheckBox);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         hautBouton = new QPushButton(centralWidget);
         hautBouton->setObjectName(QString::fromUtf8("hautBouton"));
+        hautBouton->setEnabled(false);
 
         horizontalLayout_2->addWidget(hautBouton);
 
@@ -174,16 +177,19 @@ public:
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(basBouton->sizePolicy().hasHeightForWidth());
         basBouton->setSizePolicy(sizePolicy2);
+        basBouton->setEnabled(false);
 
         horizontalLayout_2->addWidget(basBouton);
 
         modifierBouton = new QPushButton(centralWidget);
         modifierBouton->setObjectName(QString::fromUtf8("modifierBouton"));
+        modifierBouton->setEnabled(false);
 
         horizontalLayout_2->addWidget(modifierBouton);
 
         supprimerBouton = new QPushButton(centralWidget);
         supprimerBouton->setObjectName(QString::fromUtf8("supprimerBouton"));
+        supprimerBouton->setEnabled(false);
 
         horizontalLayout_2->addWidget(supprimerBouton);
 
@@ -205,6 +211,7 @@ public:
 
         ajouterBouton = new QPushButton(centralWidget);
         ajouterBouton->setObjectName(QString::fromUtf8("ajouterBouton"));
+        ajouterBouton->setEnabled(false);
 
         horizontalLayout_3->addWidget(ajouterBouton);
 
@@ -279,9 +286,9 @@ public:
         image3->setText(QString());
         image1->setText(QString());
         image4->setText(QString());
-        checkBox->setText(QApplication::translate("InterfacePrincipale", "Actif", nullptr));
+        actifCheckBox->setText(QApplication::translate("InterfacePrincipale", "Actif", nullptr));
 #ifndef QT_NO_SHORTCUT
-        checkBox->setShortcut(QApplication::translate("InterfacePrincipale", "Shift+A", nullptr));
+        actifCheckBox->setShortcut(QApplication::translate("InterfacePrincipale", "Shift+A", nullptr));
 #endif // QT_NO_SHORTCUT
         hautBouton->setText(QApplication::translate("InterfacePrincipale", "\311\205", nullptr));
 #ifndef QT_NO_SHORTCUT

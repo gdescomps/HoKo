@@ -63,10 +63,7 @@ public:
     */
     void majImage4(cv::Mat image);
 
-    /** Gestionnaire des images */
-    // GestionImage *gestionImage; 
-
-    // GestionTraitement gestionTraitement;
+    void majActivationControles();
 
     void ajouterTraitementListe(std::string nom);
 

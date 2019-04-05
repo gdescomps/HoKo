@@ -50,18 +50,22 @@ InterfacePrincipale::~InterfacePrincipale()
 
 void InterfacePrincipale::importerUneImage()
 {
-	QString nomImage = QFileDialog::getOpenFileName(this, tr("Open Image"), QDir::currentPath(), tr("Image Files [ *.jpg , *.jpeg , *.bmp , *.png , *.gif]"));
+	QString nomImage = QFileDialog::getOpenFileName(this, tr("Open Image"), QDir::currentPath(),tr("Images (*.png *.jpg *.jpeg)"));
 	
-	char* cheminImage = nomImage.toLocal8Bit().data();
+	if(nomImage!=""){
+		ui->ajouterBouton->setEnabled(true);
 
-	controleur->getGestionImage()->setImageOriginale(cv::imread(cheminImage));
-	
-	cv::Mat imageMat=controleur->getGestionImage()->getImageOriginale();
+		char* cheminImage = nomImage.toLocal8Bit().data();
 
-	majImage1(imageMat);
-	majImage2(imageMat);
-	majImage3(imageMat);
-	majImage4(imageMat);
+		controleur->getGestionImage()->setImageOriginale(cv::imread(cheminImage));
+		
+		cv::Mat imageMat=controleur->getGestionImage()->getImageOriginale();
+
+		majImage1(imageMat);
+		majImage2(imageMat);
+		majImage3(imageMat);
+		majImage4(imageMat);
+	}
 }
 
 
@@ -88,8 +92,11 @@ void InterfacePrincipale::sauvegarderImageFinale()
 			QImage monImage = imageQ->toImage();
 			//Choix de l'emplacement de la photo
 			QString filename = QFileDialog::getSaveFileName(this, tr("Sauvegarder l'image"), QDir::currentPath());
-			//Sauvegarde de l'image à l'emplacement souhaité
-			monImage.save(filename);
+
+			if(filename!=""){
+				//Sauvegarde de l'image à l'emplacement souhaité
+				monImage.save(filename);
+			}
 		}
 	else
 		{
@@ -200,15 +207,45 @@ cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
 }
 
 void InterfacePrincipale::afficherTraitement(int position){
-	//Si un traitement de la liste est séléctionné (position=-1 lors de la désélection)
 	if(position>=0){
 		majImage2(controleur->getGestionTraitement()->getTraitement(position)->getImageEntree());
 		majImage3(controleur->getGestionTraitement()->getTraitement(position)->getImageTraitee());
 	}
 }
 
+void InterfacePrincipale::majActivationControles(){
+	int position = ui->listeTraitements->currentRow();
+	int nombre = ui->listeTraitements->count();
+
+	if(position!=-1){ // Un traitement est sélectionné
+		ui->modifierBouton->setEnabled(true);
+		// ui->actifCheckBox->setEnabled(true);
+		ui->supprimerBouton->setEnabled(true);
+
+		if(position==0){ // Premier traitement
+			ui->hautBouton->setEnabled(false);
+		}
+		else{
+			ui->hautBouton->setEnabled(true);
+		}
+
+		if(position==nombre-1){ // Dernier traitement
+			ui->basBouton->setEnabled(false);
+		}
+		else{
+			ui->basBouton->setEnabled(true);
+		}
+	}
+	else{ // Sinon tout désactiver
+		ui->modifierBouton->setEnabled(false);
+		// ui->actifCheckBox->setEnabled(false);
+		ui->supprimerBouton->setEnabled(false);
+	}
+}
+
 void InterfacePrincipale::on_listeTraitements_currentRowChanged(int currentRow){
 	afficherTraitement(currentRow);
+	majActivationControles();
 }
 
 void InterfacePrincipale::on_supprimerBouton_clicked(){
@@ -218,6 +255,8 @@ void InterfacePrincipale::on_supprimerBouton_clicked(){
 	
 	if(ui->listeTraitements->count()>0)
 		afficherTraitement(ui->listeTraitements->currentRow());
+
+	majActivationControles();
 }
 
 void InterfacePrincipale::on_modifierBouton_clicked(){
