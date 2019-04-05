@@ -200,8 +200,11 @@ cv::Mat InterfacePrincipale::redimensionner(cv::Mat image){
 }
 
 void InterfacePrincipale::afficherTraitement(int position){
-	majImage2(controleur->getGestionTraitement()->getTraitement(position)->getImageEntree());
-	majImage3(controleur->getGestionTraitement()->getTraitement(position)->getImageTraitee());
+	//Si un traitement de la liste est séléctionné (position=-1 lors de la désélection)
+	if(position>=0){
+		majImage2(controleur->getGestionTraitement()->getTraitement(position)->getImageEntree());
+		majImage3(controleur->getGestionTraitement()->getTraitement(position)->getImageTraitee());
+	}
 }
 
 void InterfacePrincipale::on_listeTraitements_currentRowChanged(int currentRow){
