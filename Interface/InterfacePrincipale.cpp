@@ -161,27 +161,27 @@ void InterfacePrincipale::on_ajouterBouton_clicked()
 
 
 void InterfacePrincipale::majImage1(cv::Mat image){
-	image = redimensionner(image);
+	// image = redimensionner(image);
 	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
-	ui->image1->setPixmap(QPixmap::fromImage(imageQ));
+	ui->image1->setPixmap(QPixmap::fromImage(imageQ.scaled(ui->image2->size(), Qt::KeepAspectRatio)));
 }
 
 void InterfacePrincipale::majImage2(cv::Mat image){
-	image = redimensionner(image);
+	//image = redimensionner(image);
 	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
-	ui->image2->setPixmap(QPixmap::fromImage(imageQ));
+	ui->image2->setPixmap(QPixmap::fromImage(imageQ.scaled(ui->image2->size(), Qt::KeepAspectRatio)));
 }
 
 void InterfacePrincipale::majImage3(cv::Mat image){
-	image = redimensionner(image);
+	// image = redimensionner(image);
 	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
-	ui->image3->setPixmap(QPixmap::fromImage(imageQ));
+	ui->image3->setPixmap(QPixmap::fromImage(imageQ.scaled(ui->image2->size(), Qt::KeepAspectRatio)));
 }
 
 void InterfacePrincipale::majImage4(cv::Mat image){
-	image = redimensionner(image);
+	// image = redimensionner(image);
 	QImage imageQ = QImage((const unsigned char*)image.data,image.cols,image.rows,QImage::Format_RGB888).rgbSwapped();
-	ui->image4->setPixmap(QPixmap::fromImage(imageQ));
+	ui->image4->setPixmap(QPixmap::fromImage(imageQ.scaled(ui->image2->size(), Qt::KeepAspectRatio)));
 }
 
 
