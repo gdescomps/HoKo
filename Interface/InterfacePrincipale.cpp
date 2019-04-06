@@ -155,7 +155,7 @@ void InterfacePrincipale::afficherApropos()
 void InterfacePrincipale::on_ajouterBouton_clicked()
 {
 	if(controleur->getGestionImage()->isImportee()){
-		controleur->getGestionTraitement()->ajouterTraitement(0);
+		controleur->getGestionTraitement()->ajouterTraitement(ui->choixTraitement->currentIndex());
 	}
 }
 

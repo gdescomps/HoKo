@@ -307,8 +307,8 @@ public:
         supprimerBouton->setShortcut(QApplication::translate("InterfacePrincipale", "Del", nullptr));
 #endif // QT_NO_SHORTCUT
         choixTraitement->setItemText(0, QApplication::translate("InterfacePrincipale", "Flou Gaussien", nullptr));
-        choixTraitement->setItemText(1, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
-        choixTraitement->setItemText(2, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+        choixTraitement->setItemText(1, QApplication::translate("InterfacePrincipale", "Masque CAM3", nullptr));
+        choixTraitement->setItemText(2, QApplication::translate("InterfacePrincipale", "Segmentation TSV", nullptr));
         choixTraitement->setItemText(3, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
         choixTraitement->setItemText(4, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
 

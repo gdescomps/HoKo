@@ -3,6 +3,7 @@
 #include "Interface/InterfacePrincipale.h"
 
 #include "Traitement/FlouGaussien.h"
+#include "Traitement/SegmentationTSV.cpp"
 
 GestionTraitement::GestionTraitement(Controleur* controleur){
 	this->controleur=controleur;
@@ -31,6 +32,12 @@ void GestionTraitement::ajouterTraitement(int num){
 		Traitement* nouveauTraitement = new FlouGaussien(this, image);
 		ajouterTraitementListe(nouveauTraitement);
 	}
+
+	else if(num==2){
+		Traitement* nouveauTraitement = new SegmentationTSV(this, image);
+		ajouterTraitementListe(nouveauTraitement);
+	}
+
 }
 
 Controleur* GestionTraitement::getControleur(){

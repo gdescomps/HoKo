@@ -228,12 +228,12 @@
           </item>
           <item>
            <property name="text">
-            <string>Traitement</string>
+            <string>Masque CAM3</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Traitement</string>
+            <string>Segmentation TSV</string>
            </property>
           </item>
           <item>

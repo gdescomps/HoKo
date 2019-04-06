@@ -62,12 +62,10 @@ void FenetreModifier::envoyerValeurs(){
         switch((*it).type){
             case _INT :
                 v._int = (*itChamp)->value();
-                printf("int %i ",v._int);
                 break;
             
             case _DOUBLE :
                 v._double = (*itChamp)->value();
-                printf("double %d ",v._double);
                 break;
 
             default :

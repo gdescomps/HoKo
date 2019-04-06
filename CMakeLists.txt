@@ -25,6 +25,7 @@ set(HoKo_SRCS
 	Traitement/Traitement.cpp
 	Traitement/FlouGaussien.h
 	Traitement/FlouGaussien.cpp
+	Traitement/SegmentationTSV.cpp
 	Traitement/GestionTraitement.h
 	Traitement/GestionTraitement.cpp
 	Image/GestionImage.cpp

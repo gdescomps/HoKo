@@ -60,7 +60,7 @@ public:
             verticalLayout->addWidget(label);
 
             QDoubleSpinBox *champ = new QDoubleSpinBox(FenetreModifier);
-
+            champ->setMaximum(10000);
             switch((*it).type){
                 case _INT :
                     champ->setDecimals(0);
@@ -76,6 +76,7 @@ public:
                     printf("ERREUR : Type de variable (%i) de paramètre non trouvé \n", (*it).type);
                     break;
             }
+            
             verticalLayout->addWidget(champ);
             champs.push_back(champ);
         }

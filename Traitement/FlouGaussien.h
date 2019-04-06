@@ -8,10 +8,6 @@
 
 class FlouGaussien : public Traitement{
 	private:
-		int largeurNoyau;
-		int hauteurNoyau;
-		double sigma;
-
 
 	public:
 		FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree);
