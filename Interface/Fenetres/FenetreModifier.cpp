@@ -13,15 +13,6 @@ FenetreModifier::FenetreModifier(Traitement* traitement, bool modification, QWid
 
     ui->setupUi(this, parametres);
 
-    /*list<Parametre>::iterator it=this->parametres.begin();
-    ui->spinBoxLargeurNoyau->setValue((*it).valeur._int);
-
-    ++it;
-    ui->spinBoxHauteurNoyau->setValue((*it).valeur._int);
-
-    ++it;
-    ui->doubleSpinBoxSigma->setValue((*it).valeur._double);*/
-
     this->modification=modification;
 
     if(modification){
@@ -52,8 +43,7 @@ void FenetreModifier::on_annulerBouton_clicked()
         traitement->annulerAjout();
     }
     else{
-        majValeursChamps(sauvegardeValeurs);
-        envoyerValeurs();
+        traitement->appliquer(sauvegardeValeurs);
     }
     this->~FenetreModifier();
 }
@@ -65,24 +55,28 @@ void FenetreModifier::on_appliquerBouton_clicked()
 
 void FenetreModifier::envoyerValeurs(){
     list<Valeur> valeurs;
-    Valeur a ;
-    a._int = ui->spinBoxLargeurNoyau->value();
-    valeurs.push_back(a);
-    a._int = ui->spinBoxHauteurNoyau->value();
-    valeurs.push_back(a);
-    a._double = ui->doubleSpinBoxSigma->value();
-    valeurs.push_back(a);
+    list<QDoubleSpinBox*>::iterator itChamp=ui->champs.begin();
+
+    for (list<Parametre>::iterator it=this->parametres.begin(); it != this->parametres.end(); ++it){
+        Valeur v;
+        switch((*it).type){
+            case _INT :
+                v._int = (*itChamp)->value();
+                printf("int %i ",v._int);
+                break;
+            
+            case _DOUBLE :
+                v._double = (*itChamp)->value();
+                printf("double %d ",v._double);
+                break;
+
+            default :
+                printf("ERREUR : Type de variable (%i) de paramètre non trouvé \n", (*it).type);
+                break;
+        }
+        valeurs.push_back(v);
+        ++itChamp;
+    }
 
     traitement->appliquer(valeurs);
-}
-
-void FenetreModifier::majValeursChamps(list<Valeur> valeurs){
-    list<Valeur>::iterator it=valeurs.begin();
-    ui->spinBoxLargeurNoyau->setValue((*it)._int);
-
-    ++it;
-    ui->spinBoxHauteurNoyau->setValue((*it)._int);
-
-    ++it;
-    ui->doubleSpinBoxSigma->setValue((*it)._double);
 }

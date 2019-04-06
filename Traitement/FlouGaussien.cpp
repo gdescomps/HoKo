@@ -29,6 +29,8 @@ void FlouGaussien::appliquer(list<Valeur> valeurs){
 	++it;
 	double sigma = (*it)._double;
 
+	if(largeurNoyau%2==0) largeurNoyau++;
+	if(hauteurNoyau%2==0) hauteurNoyau++;
 	cv::GaussianBlur(this->imageEntree, this->imageTraitee, cv::Size(largeurNoyau,hauteurNoyau), sigma);
 
 	gestionTraitement->imageTraitee(this->imageTraitee);

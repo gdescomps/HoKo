@@ -31,12 +31,12 @@ public:
     list<QDoubleSpinBox*> champs;
     list<Parametre> parametres;
 
-    QLabel *labelNoyauLargeur;
+    /*QLabel *labelNoyauLargeur;
     QSpinBox *spinBoxLargeurNoyau;
     QLabel *labelNoyauHauteur;
     QSpinBox *spinBoxHauteurNoyau;
     QLabel *labelSigma;
-    QDoubleSpinBox *doubleSpinBoxSigma;
+    QDoubleSpinBox *doubleSpinBoxSigma;*/
     
     QHBoxLayout *horizontalLayout;
     
@@ -77,9 +77,9 @@ public:
                     break;
             }
             verticalLayout->addWidget(champ);
-            
+            champs.push_back(champ);
         }
-
+ 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         validerBouton = new QPushButton(FenetreModifier);

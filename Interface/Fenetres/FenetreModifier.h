@@ -63,7 +63,6 @@ private:
     bool modification;
 
     void envoyerValeurs();
-    void majValeursChamps(list<Valeur> valeurs);
     
 };
 
