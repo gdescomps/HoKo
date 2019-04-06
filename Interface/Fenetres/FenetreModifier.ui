@@ -68,6 +68,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="appliquerBouton">
+       <property name="text">
+        <string>Appliquer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="annulerBouton">
        <property name="text">
         <string>Annuler</string>

@@ -45,40 +45,18 @@ private slots:
 
     /**
     * Applique le traitement avec les nouveaux paramètres et provoque la mise à jour de l'image dans l'interface principale.
-    * Déclenchée lors de la modification de la valeur du spinBoxLargeurNoyau.
+    * Déclenchée lors de l'appui sur le bouton "Appliquer".
     */
-	void on_spinBoxLargeurNoyau_valueChanged(int largeurNoyau);
+    void on_appliquerBouton_clicked();
 
-    /**
-    * Applique le traitement avec les nouveaux paramètres et provoque la mise à jour de l'image dans l'interface principale.
-    * Déclenchée lors de la modification de la valeur du spinBoxHauteurNoyau.
-    */
-    void on_spinBoxHauteurNoyau_valueChanged(int hauteurNoyau);
-
-    /**
-    * Applique le traitement avec les nouveaux paramètres et provoque la mise à jour de l'image dans l'interface principale.
-    * Déclenchée lors de la modification de la valeur du doubleSpinBoxSigma.
-    */
-    void on_doubleSpinBoxSigma_valueChanged(double sigma);
+    
 private:
     Ui::FenetreModifier *ui;
-
-    /** L'interface principale de l'application */
-    // InterfacePrincipale *interface;
 
     Traitement* traitement;
 
     list<Parametre> parametres;
     list<Valeur> sauvegardeValeurs;
-
-    /*
-    int largeurNoyau;
-    int hauteurNoyau;
-    double sigma;*/
-
-    int sauvLargeurNoyau;
-    int sauvHauteurNoyau;
-    double sauvSigma;
 
     bool modification;
 

@@ -3,7 +3,6 @@
 #include "Interface/InterfacePrincipale.h"
 #include "Traitement/FlouGaussien.h"
 
-
 FenetreModifier::FenetreModifier(Traitement* traitement, bool modification, QWidget *parent) :
 	QDialog(parent),
     ui(new Ui::FenetreModifier)
@@ -13,6 +12,7 @@ FenetreModifier::FenetreModifier(Traitement* traitement, bool modification, QWid
     this->traitement=traitement;
 
     this->parametres=traitement->getParametres();
+
 
     list<Parametre>::iterator it=this->parametres.begin();
     ui->spinBoxLargeurNoyau->setValue((*it).valeur._int);
@@ -37,6 +37,7 @@ FenetreModifier::~FenetreModifier()
 
 void FenetreModifier::on_validerBouton_clicked()
 {
+    envoyerValeurs();
     traitement->validerModification();
     this->~FenetreModifier();
 }
@@ -47,31 +48,13 @@ void FenetreModifier::on_annulerBouton_clicked()
         traitement->annulerAjout();
     }
     else{
-        //flouGaussien(sauvLargeurNoyau,sauvHauteurNoyau,sauvSigma);
         majValeursChamps(sauvegardeValeurs);
         envoyerValeurs();
     }
     this->~FenetreModifier();
 }
 
-void FenetreModifier::on_spinBoxLargeurNoyau_valueChanged(int largeurNoyau)
-{
-    if(largeurNoyau%2!=1){//largeurNoyau doit être impaire
-    	ui->spinBoxLargeurNoyau->setValue(largeurNoyau+1);
-    }
-
-    envoyerValeurs();
-}
-
-void FenetreModifier::on_spinBoxHauteurNoyau_valueChanged(int hauteurNoyau)
-{
-    if(hauteurNoyau%2!=1)//hauteurNoyau doit être impaire
-        ui->spinBoxHauteurNoyau->setValue(hauteurNoyau+1);
-
-    envoyerValeurs();
-}
-
-void FenetreModifier::on_doubleSpinBoxSigma_valueChanged(double sigma)
+void FenetreModifier::on_appliquerBouton_clicked()
 {
     envoyerValeurs();
 }
