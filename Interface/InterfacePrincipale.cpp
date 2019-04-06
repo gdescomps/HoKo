@@ -72,13 +72,20 @@ void InterfacePrincipale::importerUneImage()
 void InterfacePrincipale::resizeEvent(QResizeEvent* event)
 {
 	if(controleur->getGestionImage()->isImportee()){
-		
 		cv::Mat imageMat=controleur->getGestionImage()->getImageOriginale();
 
 		majImage1(imageMat);
-		majImage2(imageMat);
-		majImage3(imageMat);
-		majImage4(imageMat);
+		if(ui->listeTraitements->count()>0){
+			int position = ui->listeTraitements->currentRow();
+			majImage2(controleur->getGestionTraitement()->getTraitement(position)->getImageEntree());
+			majImage3(controleur->getGestionTraitement()->getTraitement(position)->getImageTraitee());
+			majImage4(controleur->getGestionTraitement()->getTraitement(ui->listeTraitements->count()-1)->getImageTraitee());
+		}
+		else{
+			majImage2(imageMat);
+			majImage3(imageMat);
+			majImage4(imageMat);
+		}
 	}
 }
 
