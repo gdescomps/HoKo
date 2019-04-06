@@ -7,21 +7,20 @@ FenetreModifier::FenetreModifier(Traitement* traitement, bool modification, QWid
 	QDialog(parent),
     ui(new Ui::FenetreModifier)
 {
-    ui->setupUi(this);
-
     this->traitement=traitement;
 
     this->parametres=traitement->getParametres();
 
+    ui->setupUi(this, parametres);
 
-    list<Parametre>::iterator it=this->parametres.begin();
+    /*list<Parametre>::iterator it=this->parametres.begin();
     ui->spinBoxLargeurNoyau->setValue((*it).valeur._int);
 
     ++it;
     ui->spinBoxHauteurNoyau->setValue((*it).valeur._int);
 
     ++it;
-    ui->doubleSpinBoxSigma->setValue((*it).valeur._double);
+    ui->doubleSpinBoxSigma->setValue((*it).valeur._double);*/
 
     this->modification=modification;
 
@@ -33,6 +32,11 @@ FenetreModifier::FenetreModifier(Traitement* traitement, bool modification, QWid
 FenetreModifier::~FenetreModifier()
 {
     delete ui;
+}
+
+
+list<Parametre> FenetreModifier::getParametres(){
+    return this->parametres;
 }
 
 void FenetreModifier::on_validerBouton_clicked()

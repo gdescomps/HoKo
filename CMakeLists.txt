@@ -31,7 +31,7 @@ set(HoKo_SRCS
 	Image/GestionImage.h
 	Interface/Fenetres/FenetreModifier.cpp
 	Interface/Fenetres/FenetreModifier.h
-	Interface/Fenetres/FenetreModifier.ui
+	Interface/Fenetres/ui_FenetreModifier.h
 	Interface/InterfacePrincipale.cpp
     Interface/InterfacePrincipale.h
     Interface/InterfacePrincipale.ui

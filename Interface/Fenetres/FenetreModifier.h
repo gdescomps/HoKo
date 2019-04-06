@@ -30,6 +30,8 @@ public:
 
     ~FenetreModifier();
 
+    list<Parametre> getParametres();
+
 private slots:
     /**
     * Enregistre les paramètres et ferme la fenêtre.
