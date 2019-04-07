@@ -238,7 +238,7 @@
           </item>
           <item>
            <property name="text">
-            <string>Traitement</string>
+            <string>Filtre de Canny</string>
            </property>
           </item>
           <item>

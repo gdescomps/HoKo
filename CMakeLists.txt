@@ -27,6 +27,7 @@ set(HoKo_SRCS
 	Traitement/FlouGaussien.cpp
 	Traitement/Masque.cpp
 	Traitement/SegmentationTSV.cpp
+	Traitement/FiltreCanny.cpp
 	Traitement/GestionTraitement.h
 	Traitement/GestionTraitement.cpp
 	Image/GestionImage.cpp

@@ -5,6 +5,7 @@
 #include "Traitement/FlouGaussien.h"
 #include "Traitement/Masque.cpp"
 #include "Traitement/SegmentationTSV.cpp"
+#include "Traitement/FiltreCanny.cpp"
 
 GestionTraitement::GestionTraitement(Controleur* controleur){
 	this->controleur=controleur;
@@ -41,6 +42,11 @@ void GestionTraitement::ajouterTraitement(int num){
 
 	else if(num==2){
 		Traitement* nouveauTraitement = new SegmentationTSV(this, image);
+		ajouterTraitementListe(nouveauTraitement);
+	}
+
+	else if(num==3){
+		Traitement* nouveauTraitement = new FiltreCanny(this, image);
 		ajouterTraitementListe(nouveauTraitement);
 	}
 
