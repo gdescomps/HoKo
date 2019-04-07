@@ -32,6 +32,8 @@ public:
 
     list<Parametre> getParametres();
 
+    void afficherInfo(string texte);
+
 private slots:
     /**
     * Enregistre les paramètres et ferme la fenêtre.

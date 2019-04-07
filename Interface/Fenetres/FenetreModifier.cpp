@@ -78,3 +78,7 @@ void FenetreModifier::envoyerValeurs(){
 
     traitement->appliquer(valeurs);
 }
+
+void FenetreModifier::afficherInfo(string texte){
+    ui->infoLabel->setText(QString::fromStdString(texte));
+}

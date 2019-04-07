@@ -310,7 +310,7 @@ public:
         choixTraitement->setItemText(1, QApplication::translate("InterfacePrincipale", "Masque CAM3", nullptr));
         choixTraitement->setItemText(2, QApplication::translate("InterfacePrincipale", "Segmentation TSV", nullptr));
         choixTraitement->setItemText(3, QApplication::translate("InterfacePrincipale", "Filtre de Canny", nullptr));
-        choixTraitement->setItemText(4, QApplication::translate("InterfacePrincipale", "Traitement", nullptr));
+        choixTraitement->setItemText(4, QApplication::translate("InterfacePrincipale", "D\303\251tection de contours", nullptr));
 
         ajouterBouton->setText(QApplication::translate("InterfacePrincipale", "Ajouter", nullptr));
 #ifndef QT_NO_SHORTCUT

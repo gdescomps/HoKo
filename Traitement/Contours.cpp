@@ -7,6 +7,9 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 
+#include <string>
+using namespace std;
+
 using namespace cv;
 
 
@@ -18,14 +21,16 @@ class Contours : public Traitement{
 			this->nom="Détection de contours";
 			this->id=4;
 
-			this->parametres.push_back(Parametre {_INT, "Seuil 1", 100});
-			this->parametres.push_back(Parametre {_INT, "Seuil 2", 200});
-			this->parametres.push_back(Parametre {_INT, "Ouverture", 3});
+			this->parametres.push_back(Parametre {_INT, "Surface minimum", 0});
+			this->parametres.push_back(Parametre {_INT, "Surface maximum", 100});
+			this->parametres.push_back(Parametre {_DOUBLE, "Compacité minimum", 0});
+			this->parametres.push_back(Parametre {_DOUBLE, "Compacité maximum", 2});
 
-			appliquer(toValeurList(this->parametres));
 			
 			fenetre = new FenetreModifier(this);
 			fenetre->show();
+
+			appliquer(toValeurList(this->parametres));
 		}
 
 		~Contours(){}
@@ -37,19 +42,47 @@ class Contours : public Traitement{
 			cvtColor(this->imageEntree, imageGris, COLOR_BGR2GRAY);
 			
 			list<Valeur>::iterator it=valeurs.begin();
-			int seuil1 = (*it)._int; ++it;
-			int seuil2 = (*it)._int; ++it;
-			int ouverture = (*it)._int%3 * 2 + 3;
+			int surfaceMin = (*it)._int; ++it;
+			int surfaceMax = (*it)._int; ++it;
+			double compaciteMin = (*it)._double; ++it;
+			double compaciteMax = (*it)._double;
 
-			vector<vector<Point>> contours;
+			vector<vector<Point>> contoursTous, contoursSurface, contours;
 			vector<Vec4i> hierarchy;
 
-			findContours(imageGris, contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+			findContours(imageGris, contoursTous, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+
+
+			double contourAREA, contourLENGTH , compacityCA , contourAREAca , contourLENGTHca;
+
+			for (unsigned int i = 0; i < contoursTous.size(); i++)
+			{
+				contourAREA =  contourArea(contoursTous[i]);
+
+				if ( contourAREA <= surfaceMax && contourAREA >= surfaceMin)
+				{
+					contoursSurface.push_back(contoursTous[i]);
+				}
+			}
+
+			
+
+			for (unsigned int i = 0; i < contoursSurface.size(); i++)
+			{		
+				contourAREAca = contourArea(contoursSurface[i]);
+				contourLENGTHca = arcLength(contoursSurface[i] , true); 
+				compacityCA = ((4 * M_PI* contourAREAca) / (pow(contourLENGTHca ,2)));
+
+				if (compacityCA <= compaciteMax && compacityCA >= compaciteMin)
+				{
+					contours.push_back(contoursSurface[i]);
+				}
+			}
+			
 
 			// cvtColor(imageGris, this->imageTraitee, COLOR_GRAY2BGR);
-
 			gestionTraitement->getControleur()->getGestionImage()->getImageOriginale().copyTo(this->imageTraitee);
-
+			
 			for (unsigned int i = 0; i <  contours.size(); ++i)
 			{
 				Point2f points[4];
@@ -83,7 +116,8 @@ class Contours : public Traitement{
 				cv::circle(this->imageTraitee, mc[i], 4, Scalar(0, 200, 100), -1, 8, 0);
 
 			}
-
+			
+			fenetre->afficherInfo("Nombre de contours : "+to_string(contours.size()));
 
 			gestionTraitement->imageTraitee(this->imageTraitee);
 		}
@@ -97,6 +131,7 @@ class Contours : public Traitement{
 		virtual void modifier(){
 			fenetre = new FenetreModifier(this, true);
 			fenetre->show();
+			appliquer(toValeurList(this->parametres));
 		}
 
 };
