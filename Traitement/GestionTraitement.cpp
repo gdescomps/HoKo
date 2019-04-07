@@ -6,6 +6,7 @@
 #include "Traitement/Masque.cpp"
 #include "Traitement/SegmentationTSV.cpp"
 #include "Traitement/FiltreCanny.cpp"
+#include "Traitement/Contours.cpp"
 
 GestionTraitement::GestionTraitement(Controleur* controleur){
 	this->controleur=controleur;
@@ -47,6 +48,11 @@ void GestionTraitement::ajouterTraitement(int num){
 
 	else if(num==3){
 		Traitement* nouveauTraitement = new FiltreCanny(this, image);
+		ajouterTraitementListe(nouveauTraitement);
+	}
+
+	else if(num==4){
+		Traitement* nouveauTraitement = new Contours(this, image);
 		ajouterTraitementListe(nouveauTraitement);
 	}
 

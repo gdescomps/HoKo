@@ -28,6 +28,7 @@ set(HoKo_SRCS
 	Traitement/Masque.cpp
 	Traitement/SegmentationTSV.cpp
 	Traitement/FiltreCanny.cpp
+	Traitement/Contours.cpp
 	Traitement/GestionTraitement.h
 	Traitement/GestionTraitement.cpp
 	Image/GestionImage.cpp
