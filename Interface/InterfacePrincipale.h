@@ -63,12 +63,26 @@ public:
     */
     void majImage4(cv::Mat image);
 
+    /**
+    * Gère l'activation des controles de l'interface (boutons, case à cocher).
+    */
     void majActivationControles();
 
+    /**
+    * Ajoute un traitement dans la liste des traitements
+    * \param nom string nom du traitement
+    */
     void ajouterTraitementListe(std::string nom);
 
+    /**
+    * Supprime le dernier traitement ajouté dans la liste
+    */
     void annulerAjoutTraitementListe();
 
+    /**
+    * Mise à jour des images 3 et 4
+    * \param position int position du traitement séléctionné dans la liste
+    */
     void afficherTraitement(int position);
    
 private slots:
@@ -101,16 +115,31 @@ private slots:
     /**
     * Ajoute un traitement à la liste des traitements.
     * Déclenchée lors de l'appui sur le bouton "Ajouter". 
-    * Ouvre la fenêtre de modification du traitement sélectionné.
     */
 	void on_ajouterBouton_clicked();
 
+    /**
+    * Modification du traitement séléctionné.
+    * Déclenchée lors de l'appui sur le bouton "Modifier".
+    */
     void on_modifierBouton_clicked();
 
+    /**
+    * Suppression du traitement séléctionné.
+    * Déclenchée lors de l'appui sur le bouton "Supprimer".
+    */
     void on_supprimerBouton_clicked();
 
+    /**
+    * Déplacement vers le haut du traitement séléctionné.
+    * Déclenchée lors de l'appui sur le bouton "flèche vers le haut".
+    */
     void on_hautBouton_clicked();
 
+    /**
+    * Déplacement vers le bas du traitement séléctionné.
+    * Déclenchée lors de l'appui sur le bouton "flèche vers le bas".
+    */
     void on_basBouton_clicked();
 
     /**
@@ -118,12 +147,18 @@ private slots:
     */
     void resizeEvent(QResizeEvent*);
 
+    /**
+    * Appelle l'affichage du traitement avec sa position dans la liste et appelle la mise à jour des controles.
+    * \param currentRow int position dans la liste du traitement sélectionné
+    */
     void on_listeTraitements_currentRowChanged(int currentRow);
 
     
 private:
+    /** Interface Qt */
     Ui::InterfacePrincipale *ui;
 
+    /** Controleur de l'application */
     Controleur* controleur;
 
     /**

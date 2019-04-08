@@ -23,12 +23,16 @@ using namespace std;
 
 QT_BEGIN_NAMESPACE
 
+/** Interface de la fenêtre */
 class Ui_FenetreModifier
 {
 public:
     QVBoxLayout *verticalLayout;
 
+    /** Liste des champs correspondants aux paramètres */
     list<QDoubleSpinBox*> champs;
+
+    /** Liste des parametres */ 
     list<Parametre> parametres;
     
     QLabel *infoLabel;
@@ -39,6 +43,9 @@ public:
     QPushButton *appliquerBouton;
     QPushButton *annulerBouton;
 
+    /**
+    * Création des éléments de l'interface de la fenêtre
+    */
     void setupUi(QDialog *FenetreModifier, list<Parametre> parametres)
     {
         this->parametres=parametres;
@@ -106,6 +113,9 @@ public:
         QMetaObject::connectSlotsByName(FenetreModifier);
     } // setupUi
 
+    /**
+    * Traduction éventuelle des éléments de l'interface de la fenêtre
+    */
     void retranslateUi(QDialog *FenetreModifier)
     {
         FenetreModifier->setWindowTitle(QApplication::translate("FenetreModifier", "Param\303\250tres", nullptr));

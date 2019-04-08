@@ -30,8 +30,16 @@ public:
 
     ~FenetreModifier();
 
+    /**
+    * Renvoie la liste des paramètres
+    * \return list<Parametre> liste des paramètres
+    */
     list<Parametre> getParametres();
 
+    /**
+    * Affiche un texte dans un label situé entre les paramètres et les boutons
+    * \param texte string texte à afficher
+    */
     void afficherInfo(string texte);
 
 private slots:
@@ -55,15 +63,31 @@ private slots:
 
     
 private:
+    /**
+    * Interface Qt
+    */
     Ui::FenetreModifier *ui;
 
+    /**
+    * Traitement correspondant à la fenêtre
+    */
     Traitement* traitement;
 
+    /**
+    * Liste des paramètres du traitement 
+    */
     list<Parametre> parametres;
+
+
+    /**
+    * Liste des valeurs sauvegardées dans le cas de la modification d'un traitement déjà créé
+    */
     list<Valeur> sauvegardeValeurs;
 
+    /** Indicateur d'état : modification(vrai) ou création(false) */
     bool modification;
 
+    /** Envoi des valeurs des paramètres au traitement */ 
     void envoyerValeurs();
     
 };

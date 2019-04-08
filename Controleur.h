@@ -7,6 +7,8 @@
 
 class InterfacePrincipale;
 class GestionTraitement;
+
+/** Controleur de l'application, fait le lien entre les classes de la Vue et du Modele */
 class Controleur {
 
 	private:
@@ -37,8 +39,16 @@ class Controleur {
 		*/
 		GestionImage* getGestionImage();
 
+		/**
+		* Retourne un pointeur vers le gestionnaire de traitement
+		* \return GestionTraitement* pointant vers le gestionnaire de traitement
+		*/
 		GestionTraitement* getGestionTraitement();
 
+		/**
+		* Met à jour l'image 3 dans l'interface
+		* \param image Image au format OpenCV Mat remplaçant l'ancienne.
+		*/
 		void majImageTraitee(cv::Mat image);
 };
 

@@ -22,7 +22,7 @@ std::list<Traitement*> GestionTraitement::recupererTraitement(){
 	return traitements;
 }
 
-void GestionTraitement::ajouterTraitement(int num){
+void GestionTraitement::ajouterTraitement(int id){
 	cv::Mat image;
 	if(traitements.empty()){
 		image = controleur->getGestionImage()->getImageOriginale();
@@ -31,29 +31,31 @@ void GestionTraitement::ajouterTraitement(int num){
 		image = traitements.back()->getImageTraitee();
 	}
 
-	if(num==0){
-		Traitement* nouveauTraitement = new FlouGaussien(this, image);
-		ajouterTraitementListe(nouveauTraitement);
-	}
+	switch(id){
+		case 0 : {
+			Traitement* nouveauTraitement = new FlouGaussien(this, image);
+			ajouterTraitementListe(nouveauTraitement);
+		}break;
 
-	else if(num==1){
-		Traitement* nouveauTraitement = new Masque(this, image);
-		ajouterTraitementListe(nouveauTraitement);
-	}
+		case 1 : {
+			Traitement* nouveauTraitement = new Masque(this, image);
+			ajouterTraitementListe(nouveauTraitement);
+		}break;
 
-	else if(num==2){
-		Traitement* nouveauTraitement = new SegmentationTSV(this, image);
-		ajouterTraitementListe(nouveauTraitement);
-	}
+		case 2 : {
+			Traitement* nouveauTraitement = new SegmentationTSV(this, image);
+			ajouterTraitementListe(nouveauTraitement);
+		}break;
 
-	else if(num==3){
-		Traitement* nouveauTraitement = new FiltreCanny(this, image);
-		ajouterTraitementListe(nouveauTraitement);
-	}
+		case 3 : {
+			Traitement* nouveauTraitement = new FiltreCanny(this, image);
+			ajouterTraitementListe(nouveauTraitement);
+		}break;
 
-	else if(num==4){
-		Traitement* nouveauTraitement = new Contours(this, image);
-		ajouterTraitementListe(nouveauTraitement);
+		case 4 : {
+			Traitement* nouveauTraitement = new Contours(this, image);
+			ajouterTraitementListe(nouveauTraitement);
+		}break;
 	}
 
 }
