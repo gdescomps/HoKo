@@ -21,10 +21,16 @@ class Contours : public Traitement{
 			this->nom="Détection de contours";
 			this->id=4;
 
-			this->parametres.push_back(Parametre {_INT, "Surface minimum", 0});
-			this->parametres.push_back(Parametre {_INT, "Surface maximum", 100});
-			this->parametres.push_back(Parametre {_DOUBLE, "Compacité minimum", 0});
-			this->parametres.push_back(Parametre {_DOUBLE, "Compacité maximum", 2});
+			Valeur d;
+
+			d._double=1;
+			this->parametres.push_back(Parametre {_DOUBLE, "Surface minimum", d});
+			d._double=1.5;
+			this->parametres.push_back(Parametre {_DOUBLE, "Surface maximum", d});
+			d._double=0;
+			this->parametres.push_back(Parametre {_DOUBLE, "Compacité minimum", d});
+			d._double=0.2;
+			this->parametres.push_back(Parametre {_DOUBLE, "Compacité maximum", d});
 
 			
 			fenetre = new FenetreModifier(this);
@@ -42,8 +48,8 @@ class Contours : public Traitement{
 			cvtColor(this->imageEntree, imageGris, COLOR_BGR2GRAY);
 			
 			list<Valeur>::iterator it=valeurs.begin();
-			int surfaceMin = (*it)._int; ++it;
-			int surfaceMax = (*it)._int; ++it;
+			double surfaceMin = (*it)._double; ++it;
+			double surfaceMax = (*it)._double; ++it;
 			double compaciteMin = (*it)._double; ++it;
 			double compaciteMax = (*it)._double;
 
@@ -117,7 +123,9 @@ class Contours : public Traitement{
 
 			}
 			
-			fenetre->afficherInfo("Nombre de contours : "+to_string(contours.size()));
+			if(fenetre != nullptr){
+				fenetre->afficherInfo("Nombre de contours : "+to_string(contours.size()));
+			}
 
 			gestionTraitement->imageTraitee(this->imageTraitee);
 		}

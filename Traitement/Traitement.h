@@ -116,6 +116,8 @@ class Traitement {
 		*/
 		void validerModification();
 
+		void detruireFenetre(){this->fenetre=nullptr;}
+
 	protected:
 		/** Nom du traitement */
 		string nom;

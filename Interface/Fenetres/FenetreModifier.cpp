@@ -23,6 +23,7 @@ FenetreModifier::FenetreModifier(Traitement* traitement, bool modification, QWid
 FenetreModifier::~FenetreModifier()
 {
     delete ui;
+    traitement->detruireFenetre();
 }
 
 
