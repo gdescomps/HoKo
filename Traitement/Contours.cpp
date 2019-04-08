@@ -116,10 +116,10 @@ class Contours : public Traitement{
 					polylines[0].push_back(points[j]);
 
 				//DRAW THYEM ON THE BOUNDING IMAGE ! 
-				cv::rectangle(this->imageTraitee, rect, Scalar(0, 0, 255), 2);
+				//cv::rectangle(this->imageTraitee, rect, Scalar(0, 0, 255), 2);
 				// cv::polylines(this->imageTraitee, polylines, true, Scalar(0, 255, 0), 2); // ====> just to try : optional dreawing 
 				// cv::circle(this->imageTraitee, center, radius, Scalar(255, 0, 0), 2);  //=====> cool to use 
-				cv::circle(this->imageTraitee, mc[i], 4, Scalar(0, 200, 100), -1, 8, 0);
+				cv::circle(this->imageTraitee, mc[i], 4, Scalar(0, 0, 255), -1, 8, 0);
 
 			}
 			
