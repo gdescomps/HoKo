@@ -8,8 +8,9 @@
 #include "Traitement/FiltreCanny.cpp"
 #include "Traitement/Contours.cpp"
 
-#include "tinyxml2/tinyxml2.h"
-using namespace tinyxml2;
+#include <QFile>
+#include <QXmlStreamWriter>
+
 
 GestionTraitement::GestionTraitement(Controleur* controleur){
 	this->controleur=controleur;
@@ -132,49 +133,58 @@ void GestionTraitement::majTraitements(){
 	controleur->getInterface()->majImage4(image);
 }
 
-void GestionTraitement::exporterListeTraitement(char* nomFichier){
-	XMLDocument doc;
-
-	std::list<Traitement*>::iterator it;
+void GestionTraitement::exporterListeTraitement(QString nomFichier){
 
 	if(!traitements.empty()){
+
+		QFile file(nomFichier+".hoklm");
+		file.open(QIODevice::WriteOnly);
+
+		
+		QXmlStreamWriter stream(&file);
+	    stream.setAutoFormatting(true);
+	    stream.writeStartDocument();
+	    
+	    std::list<Traitement*>::iterator it;
+		
 		for(it=traitements.begin(); it!=traitements.end(); ++it){
 			
-		
-			XMLElement* traitement = doc.NewElement("Traitement");
+			
+			stream.writeStartElement("Traitement");
 
-			traitement->SetAttribute( "id", (*it)->getId() );
-			traitement->SetAttribute( "nom", (*it)->getNom().c_str());
+			stream.writeAttribute( "id", QString::number((*it)->getId()));
+			stream.writeAttribute( "nom", (*it)->getNom().c_str());
 
 			list<Parametre> parametres = (*it)->getParametres();
 
 			for (list<Parametre>::iterator itParam=parametres.begin(); itParam != parametres.end(); ++itParam){
 				Valeur v;
-				XMLElement* parametre = doc.NewElement("Parametre");
-				parametre->SetAttribute( "nom", (*itParam).nom.c_str() );
+				stream.writeStartElement("Parametre");
+				stream.writeAttribute( "nom", (*itParam).nom.c_str() );
 				switch((*itParam).type){
 					case _INT :
-						parametre->SetAttribute( "type", 0 );
-						parametre->SetAttribute( "valeur", (*itParam).valeur._int);
+						stream.writeAttribute( "type", QString::number(0) );
+						stream.writeAttribute( "valeur", QString::number((*itParam).valeur._int));
 						break;
 					
 					case _DOUBLE :
-						parametre->SetAttribute( "type", 1 );
-						parametre->SetAttribute( "valeur", (*itParam).valeur._double);
+						stream.writeAttribute( "type", QString::number(1) );
+						stream.writeAttribute( "valeur", QString::number((*itParam).valeur._double));
 						break;
 
 					default :
 						printf("ERREUR : Type de variable (%i) de paramètre non trouvé \n", (*itParam).type);
 						break;
 				}
-				traitement->InsertEndChild(parametre);
+				stream.writeEndElement(); // Parametre
 			}
-	
-			doc.InsertEndChild(traitement);
+			
+			stream.writeEndElement(); // Traitement
 			
 		}
+
+		stream.writeEndDocument();
+		file.close();
 	}
 
-	string chemin(nomFichier); chemin+=".xml";
-	doc.SaveFile(chemin.c_str());
 }
