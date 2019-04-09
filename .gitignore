@@ -36,3 +36,9 @@
 
 #Scripts
 *.sh
+
+#tinyxml2
+/tinyxml2
+
+#fichiers .xml
+*.xml

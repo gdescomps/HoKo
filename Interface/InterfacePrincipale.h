@@ -105,6 +105,9 @@ private slots:
     */
 	void afficherApropos();
 
+    void chargerConfiguration();
+    void exporterConfiguration();
+
     /**
     * Enregistre l'image finale.
     * Déclenchée lors de l'appui sur le bouton du menu Image/Sauvegarder une image.

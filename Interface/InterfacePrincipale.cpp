@@ -125,6 +125,17 @@ void InterfacePrincipale::sauvegarderImageFinale()
 
 }
 
+void InterfacePrincipale::chargerConfiguration(){
+	QString chemin = QFileDialog::getOpenFileName(this, tr("Charger une configuration"), QDir::currentPath(),tr("HoKo XML (*.xml)"));
+	char* nomFichier = chemin.toLocal8Bit().data();
+}
+
+void InterfacePrincipale::exporterConfiguration(){
+	QString chemin = QFileDialog::getSaveFileName(this, tr("Exporter la configuration"), QDir::currentPath(),tr("HoKo XML (*.xml)"));
+	char* nomFichier = chemin.toLocal8Bit().data();
+	this->controleur->getGestionTraitement()->exporterListeTraitement(nomFichier);
+}
+
 void InterfacePrincipale::afficherGuide()
 {
 #if defined(Q_OS_WIN32)

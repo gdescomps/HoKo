@@ -249,6 +249,8 @@ public:
         retranslateUi(InterfacePrincipale);
         QObject::connect(actionImporter_une_image, SIGNAL(triggered()), InterfacePrincipale, SLOT(importerUneImage()));
         QObject::connect(actionSauvegarder_l_image_finale, SIGNAL(triggered()), InterfacePrincipale, SLOT(sauvegarderImageFinale()));
+        QObject::connect(actionExporter_la_configuration, SIGNAL(triggered()), InterfacePrincipale, SLOT(exporterConfiguration()));
+        QObject::connect(actionCharger_une_configuration, SIGNAL(triggered()), InterfacePrincipale, SLOT(chargerConfiguration()));
         QObject::connect(actionAide, SIGNAL(triggered()), InterfacePrincipale, SLOT(afficherGuide()));
         QObject::connect(actionVersion, SIGNAL(triggered()), InterfacePrincipale, SLOT(afficherApropos()));
 

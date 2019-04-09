@@ -16,11 +16,11 @@ typedef union {
 } Valeur;
 
 /** Types de valeurs d'un paramètre */
-enum type {_INT, _DOUBLE, _BOOL};
+typedef enum {_INT, _DOUBLE, _BOOL}Type;
 
 /** Paramètre de traitement */
 typedef struct {
-	int type;
+	Type type;
 	string nom;
 	Valeur valeur;
 } Parametre;
@@ -105,6 +105,8 @@ class Traitement {
 		* \return nom du traitement
 		*/
 		string getNom();
+
+		int getId(){return this->id;}
 
 		/**
 		* Appel au gestionnaire de traitement pour annuler l'ajout du traitement.

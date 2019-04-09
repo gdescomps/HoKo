@@ -387,6 +387,38 @@
    </hints>
   </connection>
   <connection>
+   <sender>actionExporter_la_configuration</sender>
+   <signal>triggered()</signal>
+   <receiver>InterfacePrincipale</receiver>
+   <slot>exporterConfiguration()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCharger_une_configuration</sender>
+   <signal>triggered()</signal>
+   <receiver>InterfacePrincipale</receiver>
+   <slot>chargerConfiguration()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>actionAide</sender>
    <signal>triggered()</signal>
    <receiver>InterfacePrincipale</receiver>

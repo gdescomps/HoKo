@@ -17,6 +17,8 @@ set(CMAKE_PREFIX_PATH ~/Qt/5.12.0/gcc_64/lib/cmake/Qt5Widgets/)
 find_package(Qt5Widgets CONFIG REQUIRED)
 find_package( OpenCV REQUIRED )
 
+add_library(tinyxml2 tinyxml2/tinyxml2.cpp tinyxml2/tinyxml2.h)
+
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 # Populate a CMake variable with the sources
@@ -44,9 +46,8 @@ set(HoKo_SRCS
     main.cpp
 )
 
-
 # Tell CMake to create the HoKo executable
 add_executable(HoKo WIN32 ${HoKo_SRCS} )
 
 # Use the Widgets module from Qt 5 and OpenCV libs
-target_link_libraries(HoKo Qt5::Widgets ${OpenCV_LIBS})
+target_link_libraries(HoKo Qt5::Widgets ${OpenCV_LIBS} tinyxml2)

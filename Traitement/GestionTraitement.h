@@ -92,12 +92,12 @@
 			/**
 			* Exporte la liste des traitements dans le fichier choisi
 			*/
-			void exporterListeTraitement();
+			void exporterListeTraitement(char* nomFichier);
 
 			/**
 			* Importe la liste des traitements à partir du fichier choisi
 			*/
-			void importerListeTraitement();
+			void importerListeTraitement(char* nomFichier);
 
 	};
 
