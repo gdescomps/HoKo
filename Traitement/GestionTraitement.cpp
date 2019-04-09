@@ -146,7 +146,7 @@ void GestionTraitement::exporterListeTraitement(QString nomFichier){
 	    stream.writeStartDocument();
 	    
 	    std::list<Traitement*>::iterator it;
-		
+		stream.writeStartElement("Configuration");
 		for(it=traitements.begin(); it!=traitements.end(); ++it){
 			
 			
@@ -182,9 +182,53 @@ void GestionTraitement::exporterListeTraitement(QString nomFichier){
 			stream.writeEndElement(); // Traitement
 			
 		}
-
+		stream.writeEndElement(); // Configuration
 		stream.writeEndDocument();
 		file.close();
 	}
 
+}
+void GestionTraitement::importerListeTraitement(QString nomFichier){
+	QFile file(nomFichier);
+
+	if(file.open(QFile::ReadOnly | QFile::Text)){
+		
+    	QXmlStreamReader reader(&file);
+
+	    if (reader.readNextStartElement()) {
+	        if (reader.name() == "Configuration"){
+
+	    		while(reader.readNextStartElement()){ // Traitements
+	    	
+		    		QString s = reader.attributes().value("id").toString();
+		    		printf(s.toStdString().c_str());
+
+		    		s = reader.attributes().value("nom").toString();
+		    		printf(s.toStdString().c_str());
+
+		    		printf("\n");
+
+		    		while(reader.readNextStartElement()){ // Parametres
+	    				
+	    				printf("nom=");
+			    		QString s = reader.attributes().value("nom").toString();
+			    		printf(s.toStdString().c_str());
+
+			    		printf(" type=");
+			    		s = reader.attributes().value("type").toString();
+			    		printf(s.toStdString().c_str());
+
+			    		printf(" valeur=");
+			    		s = reader.attributes().value("valeur").toString();
+			    		printf(s.toStdString().c_str());
+
+			    		printf("\n");
+		    			reader.skipCurrentElement();
+		    		}
+	    			printf("\n");
+	    		}
+		    }
+		}
+
+	}
 }

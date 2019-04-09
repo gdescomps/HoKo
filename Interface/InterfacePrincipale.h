@@ -84,6 +84,8 @@ public:
     * \param position int position du traitement séléctionné dans la liste
     */
     void afficherTraitement(int position);
+
+    void erreurFichier();
    
 private slots:
     /**

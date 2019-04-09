@@ -127,6 +127,7 @@ void InterfacePrincipale::sauvegarderImageFinale()
 
 void InterfacePrincipale::chargerConfiguration(){
 	QString chemin = QFileDialog::getOpenFileName(this, tr("Charger une configuration"), QDir::currentPath(),tr("HoKo XML (*.hoklm)"));
+	this->controleur->getGestionTraitement()->importerListeTraitement(chemin);
 	
 }
 
@@ -238,6 +239,10 @@ void InterfacePrincipale::afficherTraitement(int position){
 		majImage2(controleur->getGestionTraitement()->getTraitement(position)->getImageEntree());
 		majImage3(controleur->getGestionTraitement()->getTraitement(position)->getImageTraitee());
 	}
+}
+
+void InterfacePrincipale::erreurFichier(){
+	QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier..."));
 }
 
 void InterfacePrincipale::majActivationControles(){
