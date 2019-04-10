@@ -127,6 +127,7 @@ void InterfacePrincipale::sauvegarderImageFinale()
 
 void InterfacePrincipale::chargerConfiguration(){
 	QString chemin = QFileDialog::getOpenFileName(this, tr("Charger une configuration"), QDir::currentPath(),tr("HoKo XML (*.hoklm)"));
+	ui->listeTraitements->clear();
 	this->controleur->getGestionTraitement()->importerListeTraitement(chemin);
 	
 }

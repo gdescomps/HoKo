@@ -238,6 +238,10 @@ void GestionTraitement::importerListeTraitement(QString nomFichier){
 	    if (reader.readNextStartElement()) {
 	        if (reader.name() == "Configuration"){
 
+	        	if(!traitements.empty()){
+	        		traitements.clear();
+	        	}
+
 	    		while(reader.readNextStartElement()){ // Traitements
 	    			
 	    			int id = reader.attributes().value("id").toInt();
