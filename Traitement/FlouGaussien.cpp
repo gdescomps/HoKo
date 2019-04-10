@@ -1,6 +1,6 @@
 #include "FlouGaussien.h"
 
-FlouGaussien::FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree) : 
+FlouGaussien::FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree, bool ouvrirFenetre) : 
 	Traitement(gestionTraitement, imageEntree)
 {
 	this->nom="Flou Gaussien";
@@ -11,9 +11,10 @@ FlouGaussien::FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEn
 	this->parametres.push_back(Parametre {_DOUBLE, "sigma", 0});
 
 	appliquer(toValeurList(this->parametres));
-
-	fenetre = new FenetreModifier(this);
-	fenetre->show();
+	if(ouvrirFenetre){
+		fenetre = new FenetreModifier(this);
+		fenetre->show();
+	}
 }
 
 

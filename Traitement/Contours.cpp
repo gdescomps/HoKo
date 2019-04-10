@@ -15,7 +15,7 @@ using namespace cv;
 
 class Contours : public Traitement{
 	public:
-		Contours(GestionTraitement* gestionTraitement, cv::Mat imageEntree) :
+		Contours(GestionTraitement* gestionTraitement, cv::Mat imageEntree, bool ouvrirFenetre=true) :
 			Traitement(gestionTraitement, imageEntree)
 		{
 			this->nom="Détection de contours";
@@ -32,9 +32,10 @@ class Contours : public Traitement{
 			d._double=0.2;
 			this->parametres.push_back(Parametre {_DOUBLE, "Compacité maximum", d});
 
-			
-			fenetre = new FenetreModifier(this);
-			fenetre->show();
+			if(ouvrirFenetre){
+				fenetre = new FenetreModifier(this);
+				fenetre->show();
+			}
 
 			appliquer(toValeurList(this->parametres));
 		}

@@ -26,6 +26,46 @@ std::list<Traitement*> GestionTraitement::recupererTraitement(){
 	return traitements;
 }
 
+Traitement* GestionTraitement::creerTraitement(int id, bool ouvrirFenetre){
+	cv::Mat image;
+	if(traitements.empty()){
+		image = controleur->getGestionImage()->getImageOriginale();
+	}
+	else{
+		image = traitements.back()->getImageTraitee();
+	}
+	Traitement* nouveauTraitement;
+	switch(id){
+		case 0 : {
+			 nouveauTraitement = new FlouGaussien(this, image, ouvrirFenetre);
+			
+		}break;
+
+		case 1 : {
+			 nouveauTraitement = new Masque(this, image);
+			
+		}break;
+
+		case 2 : {
+			 nouveauTraitement = new SegmentationTSV(this, image, ouvrirFenetre);
+			
+		}break;
+
+		case 3 : {
+			 nouveauTraitement = new FiltreCanny(this, image, ouvrirFenetre);
+			
+		}break;
+
+		case 4 : {
+			 nouveauTraitement = new Contours(this, image, ouvrirFenetre);
+
+		}break;
+	}
+
+	return nouveauTraitement;
+	
+}
+
 void GestionTraitement::ajouterTraitement(int id){
 	cv::Mat image;
 	if(traitements.empty()){
@@ -199,36 +239,40 @@ void GestionTraitement::importerListeTraitement(QString nomFichier){
 	        if (reader.name() == "Configuration"){
 
 	    		while(reader.readNextStartElement()){ // Traitements
-	    	
-		    		QString s = reader.attributes().value("id").toString();
-		    		printf(s.toStdString().c_str());
+	    			
+	    			int id = reader.attributes().value("id").toInt();
+	    			Traitement* traitement = creerTraitement(id, false);
 
-		    		s = reader.attributes().value("nom").toString();
-		    		printf(s.toStdString().c_str());
+	    			ajouterTraitementListe(traitement);
 
-		    		printf("\n");
-
+	    			list<Valeur> valeurs;
 		    		while(reader.readNextStartElement()){ // Parametres
 	    				
-	    				printf("nom=");
-			    		QString s = reader.attributes().value("nom").toString();
-			    		printf(s.toStdString().c_str());
+			    		Valeur v;
 
-			    		printf(" type=");
-			    		s = reader.attributes().value("type").toString();
-			    		printf(s.toStdString().c_str());
+			    		switch(reader.attributes().value("type").toInt()){
+							case _INT :
+								v._int=reader.attributes().value("valeur").toInt();
+								break;
+							
+							case _DOUBLE :
+								v._double=reader.attributes().value("valeur").toDouble();
+								break;
 
-			    		printf(" valeur=");
-			    		s = reader.attributes().value("valeur").toString();
-			    		printf(s.toStdString().c_str());
+							default :
+								
+								break;
+						}
 
-			    		printf("\n");
+						valeurs.push_back(v);
+			    		
 		    			reader.skipCurrentElement();
 		    		}
-	    			printf("\n");
+		    		traitement->appliquer(valeurs);
 	    		}
 		    }
 		}
-
+		file.close();
+		majTraitements();
 	}
 }

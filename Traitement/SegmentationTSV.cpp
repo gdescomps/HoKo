@@ -12,7 +12,7 @@ using namespace cv;
 
 class SegmentationTSV : public Traitement{
 	public:
-		SegmentationTSV(GestionTraitement* gestionTraitement, cv::Mat imageEntree) :
+		SegmentationTSV(GestionTraitement* gestionTraitement, cv::Mat imageEntree, bool ouvrirFenetre=true) :
 			Traitement(gestionTraitement, imageEntree)
 		{
 			this->nom="Segmentation TSV";
@@ -29,8 +29,10 @@ class SegmentationTSV : public Traitement{
 
 			appliquer(toValeurList(this->parametres));
 
-			fenetre = new FenetreModifier(this);
-			fenetre->show();
+			if(ouvrirFenetre){
+				fenetre = new FenetreModifier(this);
+				fenetre->show();
+			}
 		}
 
 		~SegmentationTSV(){}

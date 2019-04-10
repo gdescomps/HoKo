@@ -43,6 +43,8 @@
 			*/
 			Traitement* getTraitement(int position);
 
+			Traitement* creerTraitement(int id, bool ouvrirFenetre=true);
+
 			/**
 			* Ajoute un traitement en fonction de son id
 			* \param id int identifiant du traitement, correspondant aux classes filles

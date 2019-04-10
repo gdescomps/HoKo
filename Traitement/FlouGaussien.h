@@ -10,7 +10,7 @@ class FlouGaussien : public Traitement{
 	private:
 
 	public:
-		FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree);
+		FlouGaussien(GestionTraitement* gestionTraitement, cv::Mat imageEntree, bool ouvrirFenetre=true);
 		~FlouGaussien() {}
 
 		virtual void appliquer(list<Valeur> valeurs);

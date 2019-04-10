@@ -12,7 +12,7 @@ using namespace cv;
 
 class FiltreCanny : public Traitement{
 	public:
-		FiltreCanny(GestionTraitement* gestionTraitement, cv::Mat imageEntree) :
+		FiltreCanny(GestionTraitement* gestionTraitement, cv::Mat imageEntree, bool ouvrirFenetre=true) :
 			Traitement(gestionTraitement, imageEntree)
 		{
 			this->nom="Filtre de Canny";
@@ -24,8 +24,10 @@ class FiltreCanny : public Traitement{
 
 			appliquer(toValeurList(this->parametres));
 			
-			fenetre = new FenetreModifier(this);
-			fenetre->show();
+			if(ouvrirFenetre){
+				fenetre = new FenetreModifier(this);
+				fenetre->show();
+			}
 		}
 
 		~FiltreCanny(){}
