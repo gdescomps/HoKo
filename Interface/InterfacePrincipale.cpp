@@ -126,10 +126,24 @@ void InterfacePrincipale::sauvegarderImageFinale()
 }
 
 void InterfacePrincipale::chargerConfiguration(){
-	QString chemin = QFileDialog::getOpenFileName(this, tr("Charger une configuration"), QDir::currentPath(),tr("HoKo XML (*.hoklm)"));
-	ui->listeTraitements->clear();
-	this->controleur->getGestionTraitement()->importerListeTraitement(chemin);
 	
+	int validation = 16384; //Bouton Ok
+	printf("v=%i\n", validation);
+	if(ui->listeTraitements->count()>0)
+	validation = QMessageBox::question(this, tr("Êtes-vous sûr ?"), tr("Votre configuration actuelle sera perdue."));
+	printf("v=%i\n", validation);
+	if(validation==16384){
+
+		if (controleur->getGestionImage()->isImportee()) {
+			QString chemin = QFileDialog::getOpenFileName(this, tr("Charger une configuration"), QDir::currentPath(),tr("HoKo XML (*.hoklm)"));
+			ui->listeTraitements->clear();
+			this->controleur->getGestionTraitement()->importerListeTraitement(chemin);
+		}
+		else{
+			QMessageBox::critical(this, tr("Erreur"), tr("Importez d'abord une image"));
+			importerUneImage();
+		}
+	}
 }
 
 void InterfacePrincipale::exporterConfiguration(){

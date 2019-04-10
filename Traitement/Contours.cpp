@@ -36,6 +36,9 @@ class Contours : public Traitement{
 				fenetre = new FenetreModifier(this);
 				fenetre->show();
 			}
+			else{
+				fenetre = nullptr;
+			}
 
 			appliquer(toValeurList(this->parametres));
 		}
