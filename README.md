@@ -1,8 +1,10 @@
 # HoKo
+![logo](https://raw.githubusercontent.com/gdescomps/HoKo/master/logo/hoko-logo-500.png)
+
 ### Logiciel de traitement d'images pour l'estimation de l'occupation des plages d'Anglet
 Projet de fin de DUT Informatique réalisé à l'IUT de Bayonne (Université de Pau et des Pays de l'Adour)
 
-
+![capture d'écran](https://raw.githubusercontent.com/gdescomps/HoKo/master/screenshot.jpg)
 
 ### Présentation
 “HoKo” est un diminutif de “Hondartzen kontagailua” qui signifie “Le compteur des plages” en basque.
@@ -21,3 +23,6 @@ Ce logiciel s’adresse principalement à des utilisateurs confirmés ayant des 
 
 
 *Groupe projet n°18 : J.de Bonfils, G.Descomps, L.Goyeneche, X.Merlo - Semestres 3 et 4 (2018 - 2019)*
+
+### Licence
+[GPL v3](https://github.com/gdescomps/HoKo/blob/master/LICENSE)
